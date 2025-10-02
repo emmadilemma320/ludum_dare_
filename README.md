@@ -1,2 +1,0 @@
-# ludum_dare_
-
