@@ -6,10 +6,15 @@ var dir: Vector2
 var player_detected: bool
 var player: CharacterBody2D
 
+var attack_damage: int = 5
+
 func _ready():
 	player_detected = true
+	Global.enemy_crow_attack = attack_damage
 
 func _process(delta: float) -> void:
+	Global.enemy_crow_hitbox = $Hitbox
+	
 	move(delta)
 	animate()
 
@@ -28,6 +33,9 @@ func animate():
 		sprite.flip_h = true
 	elif dir.x > 0: # right
 		sprite.flip_h = false
+
+func deal_damage():
+	Global.player_health -= attack_damage
 
 func _on_timer_timeout() -> void:
 	$Timer.wait_time = rand_from([1.0, 1.5, 2.0])

@@ -11,8 +11,15 @@ class_name GhostPlayer extends CharacterBody2D
 var angle: float = 10 # in deg
 var target_angle: float = 10
 
+var max_health: int = 100
+var current_health: int = 100
+var is_dead: bool
+var is_immune: bool 
+
 func _ready() -> void:
 	Global.player = self
+	is_dead = false
+	is_immune = false
 
 func _physics_process(delta: float) -> void:
 	var x_dir = Input.get_axis("left", "right")
@@ -39,6 +46,25 @@ func _physics_process(delta: float) -> void:
 	elif(x_dir < 0): sprite.scale.x = -1
 	
 	print(inventory.items)
+	
+	check_enemy_hitbox()
+
+func check_enemy_hitbox():
+	var enemy_hitboxes = $Hitbox.get_overlapping_areas()
+	var damage: int
+	for enemy_hitbox in enemy_hitboxes:
+		if enemy_hitbox.get_parent() is CrowEnemy:
+			damage = Global.enemy_crow_attack
+	
+	if !is_immune:
+		take_damage(damage)
+		
+func take_damage(damage: int):
+	current_health -= damage
+	print("player lost %d health. health is now %d" % [damage, current_health])
+	if current_health <= 0:
+		current_health = 0
+		is_dead = true
 
 func get_speed() -> float:
 	var boost = 0

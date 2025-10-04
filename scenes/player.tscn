@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://t8uj4rip1u3i"]
+[gd_scene load_steps=11 format=3 uid="uid://t8uj4rip1u3i"]
 
 [ext_resource type="Script" uid="uid://dvqn6wgm3ench" path="res://scripts/ghost_player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://co0yhkuxdin3y" path="res://assets/free_pigeon_assets_temp.png" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://csubdq1gp7qj2" path="res://scripts/inventory.gd" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
-radius = 5.09902
+radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("3_dqkch")
@@ -43,6 +43,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 ground_speed = 15.0
@@ -70,3 +73,8 @@ frame_progress = 0.92413
 process_callback = 0
 wait_time = 0.2
 one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_qhqgy")
