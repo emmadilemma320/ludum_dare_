@@ -1,6 +1,6 @@
 class_name CrowEnemy extends CharacterBody2D
 
-const speed: int = 40
+const speed: int = 30
 
 var dir: Vector2
 var player_detected: bool
