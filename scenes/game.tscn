@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=3 format=3 uid="uid://d2ojxhddjdhi5"]
+
+[ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://c34tfkbvcpa58" path="res://scenes/crow_enemy.tscn" id="2_lnu2h"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_yqjtg")]
+
+[node name="CrowEnemy" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(22, -17)
