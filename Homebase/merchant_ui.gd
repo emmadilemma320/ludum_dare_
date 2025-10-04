@@ -137,10 +137,7 @@ func _build_upgrades():
 		row.add_child(buy_btn)
 
 		if owned:
-			var tag := Label.new()
-			tag.text = "O"
-			tag.modulate = Color(0.7, 1, 0.7)
-			row.add_child(tag)
+			buy_btn.text = "Own"
 
 		upgrades_vbox.add_child(row)
 
