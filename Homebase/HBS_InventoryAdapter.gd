@@ -103,7 +103,7 @@ func _get_item_price(it, id: String) -> int:
 	return int(price_map.get(id, 0))
 		
 func _apply_speed_bonus(amount: int) -> void:
-	var candidates := ["speed", "move_speed", "max_speed", "run_speed"]
+	var candidates := ["fly_speed"]
 	for prop in candidates:
 		var val = player.get(prop)
 		if typeof(val) == TYPE_INT or typeof(val) == TYPE_FLOAT:
