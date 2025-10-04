@@ -1,8 +1,8 @@
 extends Resource
 
-class_name item
+class_name Item
 
-var item_id: String = ""
+@export var item_id: String
 
-func _init(item_id: String) -> void:
-	self.item_id = item_id
+func _to_string() -> String:
+	return item_id

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://ddp0rkfrwqdt"]
+
+[ext_resource type="Script" uid="uid://vp7yedolsvk6" path="res://scripts/item.gd" id="1_7jjfi"]
+
+[resource]
+script = ExtResource("1_7jjfi")
+item_id = "rusty_watch"
+metadata/_custom_type_script = "uid://vp7yedolsvk6"

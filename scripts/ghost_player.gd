@@ -11,3 +11,5 @@ func _physics_process(delta: float) -> void:
 	velocity = dir * speed;
 	velocity += Vector2.DOWN * gravity
 	move_and_slide()
+	
+	print(inventory.items)

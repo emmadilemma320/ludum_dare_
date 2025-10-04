@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=5 format=3 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://c34tfkbvcpa58" path="res://scenes/crow_enemy.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" path="res://scenes/crow_enemy.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cw5k46k1ps50j" path="res://scenes/item_sparkle.tscn" id="3_lnu2h"]
+[ext_resource type="Resource" uid="uid://ddp0rkfrwqdt" path="res://items/rusty_watch.tres" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 
@@ -9,3 +11,7 @@
 
 [node name="CrowEnemy" parent="." instance=ExtResource("2_lnu2h")]
 position = Vector2(22, -17)
+
+[node name="ItemSparkle" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(80, 31)
+item = ExtResource("4_lbhrr")
