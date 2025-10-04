@@ -1,5 +1,7 @@
 class_name GhostPlayer extends CharacterBody2D
 
+@export var inventory: Inventory
+
 @export var speed: float
 @export var gravity: float
 

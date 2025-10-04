@@ -1,4 +1,4 @@
-extends Node
+class_name Inventory extends Node
 
 const INITIAL_SIZE = 10
 
