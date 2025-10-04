@@ -5,6 +5,9 @@ class_name GhostPlayer extends CharacterBody2D
 @export var speed: float
 @export var gravity: float
 
+func _ready() -> void:
+	Global.player = self
+
 func _physics_process(delta: float) -> void:
 	var dir = Input.get_vector("left", "right", "flap", "dive")
 	
