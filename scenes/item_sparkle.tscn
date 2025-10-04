@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw5k46k1ps50j"]
+[gd_scene load_steps=4 format=3 uid="uid://bgukh7keafv8t"]
 
 [ext_resource type="Texture2D" uid="uid://cgqwjhuwj724q" path="res://icon.svg" id="1_gl8g6"]
-[ext_resource type="Script" uid="uid://dt5i4kf806ina" path="res://scripts/item_sparkle.gd" id="1_pnip5"]
+[ext_resource type="Script" path="res://scripts/item_sparkle.gd" id="1_pnip5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnip5"]
 radius = 16.0312

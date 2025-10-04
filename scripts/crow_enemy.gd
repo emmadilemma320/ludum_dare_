@@ -1,28 +1,33 @@
 class_name CrowEnemy extends CharacterBody2D
 
-const speed: int = 10
+const speed: int = 30
 
 var dir: Vector2
 var player_detected: bool
+var player: CharacterBody2D
+
+func _ready():
+	player_detected = true
 
 func _process(delta: float) -> void:
 	move(delta)
 	animate()
 
 func move(delta):
-	if ! player_detected:
+	if player_detected:
+		player = Global.player
+		dir = position.direction_to(player.position)
+		velocity = dir * speed
+	else:
 		velocity += dir * speed * delta
 	move_and_slide()
 
 func animate():
 	var sprite = $AnimatedSprite2D
-	if dir.x == -1: # left
+	if dir.x < 0: # left
 		sprite.flip_h = true
-	elif dir.x == 1: # right
+	elif dir.x > 0: # right
 		sprite.flip_h = false
-
-func _ready():
-	player_detected = false
 
 func _on_timer_timeout() -> void:
 	$Timer.wait_time = rand_from([1.0, 1.5, 2.0])

@@ -43,11 +43,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inventory")]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
-inventory = NodePath("Inventory")
-speed = 400.0
-gravity = 80.0
+ground_speed = 15.0
+fly_speed = 80.0
+rotate_speed = 80.0
+dive_speed_boost = 20.0
+flap_speed_boost = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0hol4")
@@ -63,3 +65,8 @@ script = ExtResource("3_qhqgy")
 sprite_frames = SubResource("SpriteFrames_ur7pv")
 autoplay = "default"
 frame_progress = 0.92413
+
+[node name="FlapTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.2
+one_shot = true
