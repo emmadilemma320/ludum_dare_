@@ -23,8 +23,10 @@ var _font: FontFile = preload("res://Homebase/tiny.ttf")  # <-- change path
 var _font_size := 12  # pick what you want (8–12 usually looks clean)
 
 var UPGRADE_DEFS := [
-	{ "id": "upgrade_a", "icon": "res://Homebase/icon.png", "label": "+20 Health", "price": 50 },
-	{ "id": "upgrade_b", "icon": "res://Homebase/icon.png", "label": "+50 Speed", "price": 120 },
+	{ "id": "upgrade_a", "icon": "res://Homebase/icon.png", "label": "Health LV1", "price": 500 },
+	{ "id": "upgrade_b", "icon": "res://Homebase/icon.png", "label": "Speed LV1", "price": 1200 },
+	{ "id": "upgrade_c", "icon": "res://Homebase/icon.png", "label": "Dive LV1", "price": 1200 },
+	{ "id": "upgrade_d", "icon": "res://Homebase/icon.png", "label": "Flap LV1", "price": 1200 },
 ]
 	
 func _style_label(lbl: Label):

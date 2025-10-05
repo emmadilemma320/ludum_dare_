@@ -82,6 +82,10 @@ func add_upgrade(id: String) -> void:
 		_apply_speed_bonus(50)
 	if id == "upgrade_a" and player:
 		__apply_health_bonus(20)
+	if id == "upgrade_c" and player:
+		__apply_dive_bonus(50)
+	if id == "upgrade_d" and player:
+		__apply_flap_bonus(20)
 			
 # ---- helpers ----
 func _get_item_id(it) -> String:
@@ -120,6 +124,22 @@ func __apply_health_bonus(amount: int) -> void:
 		if typeof(val) == TYPE_INT or typeof(val) == TYPE_FLOAT:
 			player.set(prop, val + amount)
 			print("Health up! New %s = %s" % [prop, player.get(prop)])
+			return
+func __apply_dive_bonus(amount: int) -> void:
+	var candidates := ["dive_strength"]
+	for prop in candidates:
+		var val = player.get(prop)
+		if typeof(val) == TYPE_INT or typeof(val) == TYPE_FLOAT:
+			player.set(prop, val + amount)
+			print("Dive strength up! New %s = %s" % [prop, player.get(prop)])
+			return
+func __apply_flap_bonus(amount: int) -> void:
+	var candidates := ["flap_strength"]
+	for prop in candidates:
+		var val = player.get(prop)
+		if typeof(val) == TYPE_INT or typeof(val) == TYPE_FLOAT:
+			player.set(prop, val + amount)
+			print("Flap strength up! New %s = %s" % [prop, player.get(prop)])
 			return
 func _ready():
 	if player == null and get_parent() != null:
