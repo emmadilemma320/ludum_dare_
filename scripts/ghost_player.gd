@@ -28,6 +28,7 @@ func _ready() -> void:
 	is_dead = false
 	Global.player_dead = false
 	is_immune = false
+	current_health = max_health
 
 func _physics_process(delta: float) -> void:
 	var x_dir = Input.get_axis("left", "right")
@@ -110,7 +111,8 @@ func die():
 	is_dead = true
 	Global.player_dead = true
 	visible = false
-	await get_tree().create_timer(1.0).timeout
+	
+	print("player died")
 	respawn()
 	
 func respawn():
@@ -119,6 +121,7 @@ func respawn():
 	is_dead = false
 	Global.player_dead = false
 	is_immune = false
+	current_health = max_health
 
 func immunity_cooldown(seconds: float):
 	is_immune = true
