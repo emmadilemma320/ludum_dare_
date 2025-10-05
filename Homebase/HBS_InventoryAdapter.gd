@@ -7,7 +7,7 @@ class_name HBS_InventoryAdapter
 
 var _owned_upgrades := {}
 
-# ---- Pricing rules for your teammate's Item resources ----
+# ---- Pricing rules for Item resources ----
 const BASE_PRICE_BY_TYPE := {
 	"coin": 1,
 	"watch": 3,
@@ -45,7 +45,7 @@ func get_sellables() -> Array:
 	var icons := {}   # id -> Texture2D
 
 	for it in inv.items:
-		# Your inventory is Array[Item]; guard for safety
+		# inventory is Array[Item]; guard for safety
 		if typeof(it) == TYPE_OBJECT and it is Item:
 			var id := _item_id(it)
 			counts[id] = int(counts.get(id, 0)) + 1
@@ -117,7 +117,7 @@ func remove_sold(ids: Array) -> void:
 		if curr_id in idset:
 			inv.remove_item(i)
 
-# ---- Upgrades (unchanged, but uses player.get/set safely) ----
+# ---- Upgrades ----
 func has_upgrade(id: String) -> bool:
 	return bool(_owned_upgrades.get(id, false))
 
@@ -131,9 +131,8 @@ func add_upgrade(id: String) -> void:
 	if id == "upgrade_d": __apply_flap_bonus(20)
 	if id == "upgrade_e": __apply_hover_bonus(-10)
 
-# Speed: now tied to your teammate's GhostPlayer fields
 func _apply_speed_bonus(amount: int) -> void:
-	# If they later add add_speed(), prefer that
+	# If add_speed(), prefer that
 	if player.has_method("add_speed"):
 		player.add_speed(amount)
 		print("Speed up! ground=%s fly=%s" % [player.get("ground_speed"), player.get("fly_speed")])
