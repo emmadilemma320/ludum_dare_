@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://keisawv8edby"]
+
+[ext_resource type="Texture2D" uid="uid://djhdj3kg6ibwa" path="res://assets/items.png" id="1_alpwm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6u6y"]
+atlas = ExtResource("1_alpwm")
+region = Rect2(24, 24, 8, 8)
+
+[node name="ItemUI" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1144.0
+offset_bottom = -640.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_j6u6y")
