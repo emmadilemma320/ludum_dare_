@@ -31,25 +31,27 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var x_dir = Input.get_axis("left", "right")
-	velocity.x = x_dir * get_speed()
 	
-	if(Input.is_action_just_pressed("flap")):
-		playback.travel("flap")
-		playback.start("flap", true)
-		if(velocity.y < 0):
-			velocity.y -= flap_strength * move_toward(1, 0, abs(min(0, velocity.y)) / max_flap_velocity)
-		else:
-			velocity.y = -flap_strength
-	
-	if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength):
-		velocity.y = dive_strength
-	
+	if !is_dead:
+		velocity.x = x_dir * get_speed()
+		
+		if(Input.is_action_just_pressed("flap")):
+			playback.travel("flap")
+			playback.start("flap", true)
+			if(velocity.y < 0):
+				velocity.y -= flap_strength * move_toward(1, 0, abs(min(0, velocity.y)) / max_flap_velocity)
+			else:
+				velocity.y = -flap_strength
+		
+		if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength):
+			velocity.y = dive_strength
+			
+		check_enemy_hitbox()
+		animate(x_dir)
+		
 	velocity.y = move_toward(velocity.y, get_max_fall_speed(), get_curr_gravity() * delta)
 
 	move_and_slide()
-	check_enemy_hitbox()
-	
-	animate(x_dir)
 
 func animate(x_dir):
 	if(x_dir > 0): sprite.scale.x = 1
@@ -96,21 +98,37 @@ func check_enemy_hitbox():
 func take_damage(damage: int):
 	current_health -= damage
 	print("player lost %d health. health is now %d" % [damage, current_health])
+	damage_animation(0.1)
 	
 	if current_health <= 0:
-		current_health = 0
-		is_dead = true
-		Global.player_dead = true
+		die()
 		
 	immunity_cooldown(1.0)
 
-func immunity_cooldown(seconds: int):
+func die():
+	current_health = 0
+	is_dead = true
+	Global.player_dead = true
+	visible = false
+	await get_tree().create_timer(1.0).timeout
+	respawn()
+	
+func respawn():
+	global_position = Global.spawn_pos.global_position
+	visible = true
+	is_dead = false
+	Global.player_dead = false
+	is_immune = false
+
+func immunity_cooldown(seconds: float):
 	is_immune = true
 	await get_tree().create_timer(seconds).timeout
 	is_immune = false
 	
-func death_animation():
-	"""TODO"""
+func damage_animation(seconds: float):
+	sprite.modulate = Color.RED
+	await get_tree().create_timer(seconds).timeout
+	sprite.modulate = Color.WHITE
 
 func get_curr_gravity() -> float:
 	if(Input.is_action_pressed("dive")): 

@@ -6,7 +6,7 @@ var dir: Vector2
 var player_detected: bool
 var player: CharacterBody2D
 
-var attack_damage: int = 5
+var attack_damage: int = 10
 
 var jump_away: bool
 
@@ -18,16 +18,21 @@ func _ready():
 func _process(delta: float) -> void:
 	Global.enemy_crow_hitbox = $Hitbox
 	
+	if Global.player_dead:
+		player_detected = false
+	else:
+		player_detected = true
+	
 	move(delta)
 	animate()
 
 func move(delta):
-	if jump_away:
+	if jump_away and !Global.player_dead:
 		dir = position.direction_to(player.position) * -20
 		velocity = dir * speed
 		jump_away = false
 		
-	elif player_detected:
+	elif player_detected and !Global.player_dead:
 		player = Global.player
 		dir = position.direction_to(player.position)
 		velocity = dir * speed

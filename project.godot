@@ -17,13 +17,17 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://scripts/global.gd"
 HbsShopService="*res://Homebase/HBS_ShopService.gd"
 HbsWallet="*res://Homebase/HBS_Wallet.gd"
+Global="*res://scripts/global.gd"
 
 [display]
 
 window/stretch/mode="viewport"
+
+[editor]
+
+version_control/canvas_textures/default_texture_filter=0
 
 [input]
 

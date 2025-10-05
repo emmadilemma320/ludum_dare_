@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=16 format=4 uid="uid://d2ojxhddjdhi5"]
 
+[ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://c34tfkbvcpa58" path="res://scenes/crow_enemy.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bgukh7keafv8t" path="res://scenes/item_sparkle.tscn" id="3_lnu2h"]
-[ext_resource type="Resource" uid="uid://dyms2iporguxj" path="res://items/gold_crown.tres" id="4_u5sy4"]
+[ext_resource type="Resource" uid="uid://c12jxbym8b8jr" path="res://items/gold_crown.tres" id="4_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://pfqay6ok4qi0" path="res://assets/tileset_garbage.png" id="6_gee14"]
 [ext_resource type="PackedScene" uid="uid://bg55fw80edhf8" path="res://Homebase/merchant.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dr05l58s3l1c6" path="res://assets/nest.png" id="6_u5sy4"]
@@ -327,6 +328,7 @@ size = Vector2(476, 20)
 normal = Vector2(0, 1)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_gee14")
 
 [node name="Player" parent="." instance=ExtResource("1_yqjtg")]
 position = Vector2(-272, 58)
@@ -367,3 +369,6 @@ position = Vector2(0, -128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SkyBorder"]
 shape = SubResource("WorldBoundaryShape2D_vtaks")
+
+[node name="SpawnPos" type="Node2D" parent="."]
+position = Vector2(-272, 58)
