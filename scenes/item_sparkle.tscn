@@ -1,18 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgukh7keafv8t"]
+[gd_scene load_steps=10 format=3 uid="uid://bgukh7keafv8t"]
 
-[ext_resource type="Texture2D" uid="uid://cgqwjhuwj724q" path="res://icon.svg" id="1_gl8g6"]
 [ext_resource type="Script" uid="uid://dt5i4kf806ina" path="res://scripts/item_sparkle.gd" id="1_pnip5"]
+[ext_resource type="Texture2D" uid="uid://dnnlaxrhnt78n" path="res://assets/item_shimmer_gold.png" id="2_pnip5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oknkj"]
+atlas = ExtResource("2_pnip5")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84w0x"]
+atlas = ExtResource("2_pnip5")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niaks"]
+atlas = ExtResource("2_pnip5")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfr4p"]
+atlas = ExtResource("2_pnip5")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in8xi"]
+atlas = ExtResource("2_pnip5")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_77wie"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oknkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84w0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niaks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfr4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in8xi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnip5"]
-radius = 6.0
+radius = 8.0
 
 [node name="ItemSparkle" type="Area2D"]
+z_index = 3
 monitorable = false
 script = ExtResource("1_pnip5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_gl8g6")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_77wie")
+autoplay = "default"
+frame_progress = 0.40326
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pnip5")
