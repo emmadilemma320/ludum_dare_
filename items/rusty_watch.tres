@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://ddp0rkfrwqdt"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ddp0rkfrwqdt"]
 
 [ext_resource type="Script" uid="uid://vp7yedolsvk6" path="res://scripts/item.gd" id="1_7jjfi"]
+[ext_resource type="Texture2D" uid="uid://cgqwjhuwj724q" path="res://icon.svg" id="2_enmgp"]
 
 [resource]
 script = ExtResource("1_7jjfi")
-item_id = "rusty_watch"
+type = "watch"
+rarity = 0
+texture = ExtResource("2_enmgp")
 metadata/_custom_type_script = "uid://vp7yedolsvk6"
