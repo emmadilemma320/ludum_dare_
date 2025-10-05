@@ -359,6 +359,8 @@ position_smoothing_enabled = true
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("3_qhqgy")
 
+[node name="PickupSFX" type="AudioStreamPlayer" parent="Inventory"]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
 animation = &"Ground"
@@ -386,3 +388,5 @@ script = ExtResource("4_dqkch")
 [node name="Inventory UI" parent="CanvasLayer" instance=ExtResource("5_tuyoq")]
 
 [node name="HeartsUI" parent="CanvasLayer" instance=ExtResource("5_qlg0r")]
+
+[node name="PlayerSFX" type="AudioStreamPlayer" parent="."]

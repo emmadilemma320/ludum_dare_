@@ -26,11 +26,11 @@ var sfx_buy = preload("res://Homebase/purchasesuccess.mp3")
 var sfx_sell = preload("res://Homebase/coindrop.mp3")
 
 var UPGRADE_DEFS := [
-	{ "id": "upgrade_a", "icon": "res://Homebase/icon.png", "label": "Health LV1", "price": 500 },
-	{ "id": "upgrade_b", "icon": "res://Homebase/icon.png", "label": "Speed LV1", "price": 1200 },
-	{ "id": "upgrade_c", "icon": "res://Homebase/icon.png", "label": "Dive LV1", "price": 1200 },
-	{ "id": "upgrade_d", "icon": "res://Homebase/icon.png", "label": "Flap LV1", "price": 1200 },
-	{ "id": "upgrade_e", "icon": "res://Homebase/icon.png", "label": "Hover LV1", "price": 1200 },
+	{ "id": "upgrade_a", "icon": "res://Homebase/Health.png", "label": "Heart of Gold (HP+)", "price": 100 },
+	{ "id": "upgrade_b", "icon": "res://Homebase/Speed.png", "label": "Shiny Gear (Spd+)", "price": 130 },
+	{ "id": "upgrade_c", "icon": "res://Homebase/Dive.png", "label": "Kama’s Arrowhead (Dive+)", "price": 120 },
+	{ "id": "upgrade_d", "icon": "res://Homebase/Flap.png", "label": "Ra's Feather (Flap+)", "price": 200 },
+	{ "id": "upgrade_e", "icon": "res://Homebase/Hover.png", "label": "Golden Umberlla (Hover+)", "price": 200 },
 ]
 	
 func _style_label(lbl: Label):
@@ -131,7 +131,7 @@ func _build_upgrades():
 
 		var price_lbl := Label.new()
 		_style_label(price_lbl)
-		price_lbl.custom_minimum_size = Vector2(70, 0)
+		price_lbl.custom_minimum_size = Vector2(35, 0)
 		price_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		price_lbl.text = "%d" % price
 		row.add_child(price_lbl)
