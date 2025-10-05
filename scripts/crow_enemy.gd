@@ -8,9 +8,12 @@ var player: CharacterBody2D
 
 var attack_damage: int = 5
 
+var jump_away: bool
+
 func _ready():
 	player_detected = true
 	Global.enemy_crow_attack = attack_damage
+	jump_away = false
 
 func _process(delta: float) -> void:
 	Global.enemy_crow_hitbox = $Hitbox
@@ -19,10 +22,16 @@ func _process(delta: float) -> void:
 	animate()
 
 func move(delta):
-	if player_detected:
+	if jump_away:
+		dir = position.direction_to(player.position) * -20
+		velocity = dir * speed
+		jump_away = false
+		
+	elif player_detected:
 		player = Global.player
 		dir = position.direction_to(player.position)
 		velocity = dir * speed
+		
 	else:
 		velocity += dir * speed * delta
 	move_and_slide()
@@ -34,8 +43,8 @@ func animate():
 	elif dir.x > 0: # right
 		sprite.flip_h = false
 
-func deal_damage():
-	Global.player_health -= attack_damage
+func jump_back():
+	jump_away = true
 
 func _on_timer_timeout() -> void:
 	$Timer.wait_time = rand_from([1.0, 1.5, 2.0])
