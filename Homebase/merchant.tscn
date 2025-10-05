@@ -1,42 +1,28 @@
-[gd_scene load_steps=18 format=4 uid="uid://bg55fw80edhf8"]
+[gd_scene load_steps=16 format=4 uid="uid://bg55fw80edhf8"]
 
 [ext_resource type="Script" uid="uid://c6jq7jfgabih3" path="res://Homebase/merchant.gd" id="1_gvxu1"]
-[ext_resource type="Texture2D" uid="uid://co0yhkuxdin3y" path="res://assets/free_pigeon_assets_temp.png" id="2_rkp7r"]
+[ext_resource type="Texture2D" uid="uid://bmyrur4f2f2pr" path="res://assets/crow_shopkeep.png" id="2_gvxu1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xignb"]
-atlas = ExtResource("2_rkp7r")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkp7r"]
+atlas = ExtResource("2_gvxu1")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_patw3"]
-atlas = ExtResource("2_rkp7r")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tjv1"]
-atlas = ExtResource("2_rkp7r")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnkrr"]
-atlas = ExtResource("2_rkp7r")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnhxu"]
+atlas = ExtResource("2_gvxu1")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_patw3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xignb")
+"texture": SubResource("AtlasTexture_rkp7r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_patw3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2tjv1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rnkrr")
+"texture": SubResource("AtlasTexture_qnhxu")
 }],
 "loop": true,
 "name": &"IdleMerchant",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_phma5"]
@@ -532,6 +518,7 @@ position = Vector2(258, 45)
 sprite_frames = SubResource("SpriteFrames_patw3")
 animation = &"IdleMerchant"
 autoplay = "IdleMerchant"
+frame_progress = 0.665293
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(258, 46)
