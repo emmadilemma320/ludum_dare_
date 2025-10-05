@@ -10,6 +10,7 @@ extends Control
 # ---------- RIGHT PANEL (under PanelPlayer) ----------
 @onready var items_vbox: VBoxContainer = $PanelPlayer/VBoxContainer/ScrollContainer/ItemsVBox
 @onready var sell_all_items_btn: Button = $PanelPlayer/VBoxContainer/HBoxContainer/ButtonSellAllItems
+@onready var button_close = $ButtonClose
 
 # (Optional SFX)
 @onready var sfx: AudioStreamPlayer = $MerchantSFX if has_node("MerchantSFX") else null
@@ -48,6 +49,10 @@ func _ready():
 		_style_button(sell_all_items_btn, 30, 16)
 	# RIGHT: buttons
 	sell_all_items_btn.pressed.connect(_on_sell_all_items_global)
+	
+	#Close
+	if button_close:
+		button_close.pressed.connect(func(): queue_free())
 
 	# Build both panels
 	_refresh_title()
