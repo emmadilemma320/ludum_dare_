@@ -2,10 +2,10 @@ extends Node2D
 
 const THROWN_OBJECT = preload("res://scenes/thrown_object.tscn")
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var player: GhostPlayer = Global.player
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var throw_timer: Timer = $ThrowTimer
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 @export var max_dist: float
 @export var throw_speed: float
@@ -18,9 +18,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if(player.position < position):
-		scale.x = -1
-	else: 
 		scale.x = 1
+	else: 
+		scale.x = -1
 
 func _on_throw_timer_timeout() -> void:
 	throw_timer.start(randf_range(min_throw_delay, max_throw_delay))
@@ -37,9 +37,15 @@ func _on_throw_timer_timeout() -> void:
 		ray_cast_2d.target_position = player.position - position
 		
 		if(ray_cast_2d.is_colliding()): return
+		sprite_2d.play("throw")
+		await sprite_2d.animation_finished
 		throw_at(player.position)
+		sprite_2d.play("default")
 		return
 	
+	sprite_2d.play("throw")
+	await sprite_2d.animation_finished
+	sprite_2d.play("default")
 	throw_at(target_pos)
 
 func throw_at(target_pos: Vector2):

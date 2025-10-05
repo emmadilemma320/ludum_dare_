@@ -203,7 +203,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_qlg0r"]
 resource_name = "walk_ground"
-length = 0.75
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -224,10 +224,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, -2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
@@ -283,13 +283,13 @@ states/dive/position = Vector2(542.875, 264.262)
 states/flap/node = SubResource("AnimationNodeAnimation_tuyoq")
 states/flap/position = Vector2(700.25, 152.375)
 states/glide/node = SubResource("AnimationNodeAnimation_qlg0r")
-states/glide/position = Vector2(542.5, 152)
+states/glide/position = Vector2(541.438, 154.688)
 states/idle_ground/node = SubResource("AnimationNodeAnimation_qhqgy")
 states/idle_ground/position = Vector2(363, 157)
 states/walk_ground/node = SubResource("AnimationNodeAnimation_dqkch")
 states/walk_ground/position = Vector2(364.5, 55.5)
 transitions = ["Start", "idle_ground", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "idle_ground", "walk_ground", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "walk_ground", "idle_ground", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle_ground", "glide", SubResource("AnimationNodeStateMachineTransition_smehm"), "glide", "idle_ground", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "glide", "flap", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "flap", "glide", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "glide", "dive", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "dive", "glide", SubResource("AnimationNodeStateMachineTransition_jej6c"), "flap", "dive", SubResource("AnimationNodeStateMachineTransition_qhqgy")]
-graph_offset = Vector2(443.88, 104.287)
+graph_offset = Vector2(32.88, 0.629519)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 5.0
