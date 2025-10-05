@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://t8uj4rip1u3i"]
+[gd_scene load_steps=41 format=3 uid="uid://t8uj4rip1u3i"]
 
 [ext_resource type="Script" uid="uid://dvqn6wgm3ench" path="res://scripts/ghost_player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://c1jtolmija1a8" path="res://assets/crow.png" id="3_dqkch"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://6p7npl0v8m22" path="res://Homebase/HBS_InventoryAdapter.gd" id="4_dqkch"]
 [ext_resource type="PackedScene" uid="uid://ca5a186ame1k5" path="res://scenes/hearts_ui.tscn" id="5_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://dnfv7wmshk2bn" path="res://scenes/UI/inventory_ui.tscn" id="5_tuyoq"]
-[ext_resource type="Script" uid="uid://cr2rrsd71kbif" path="res://scripts/inventory_ui.gd" id="6_fjrip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
 radius = 6.0
@@ -320,6 +319,8 @@ position_smoothing_enabled = true
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("3_qhqgy")
 
+[node name="PickupSFX" type="AudioStreamPlayer" parent="Inventory"]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
 animation = &"Ground"
@@ -346,6 +347,7 @@ script = ExtResource("4_dqkch")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Inventory UI" parent="CanvasLayer" instance=ExtResource("5_tuyoq")]
-script = ExtResource("6_fjrip")
 
 [node name="HeartsUI" parent="CanvasLayer" instance=ExtResource("5_qlg0r")]
+
+[node name="PlayerSFX" type="AudioStreamPlayer" parent="."]

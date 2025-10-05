@@ -18,6 +18,13 @@ class_name GhostPlayer extends CharacterBody2D
 @export var dive_gravity: float
 @export var max_dive_fall_speed: float
 
+# (Optional SFX)
+@onready var sfx: AudioStreamPlayer = $PlayerSFX if has_node("PlayerSFX") else null
+
+# Preload sounds once
+var sfx_flap = preload("res://assets/wingflap.mp3")
+var sfx_damage = preload("res://assets/damage.wav")
+
 var max_health: int = 2:
 	set(value):
 		var diff = max(0, value - max_health)
@@ -43,6 +50,7 @@ func _physics_process(delta: float) -> void:
 		if(Input.is_action_just_pressed("flap")):
 			playback.travel("flap")
 			playback.start("flap", true)
+			_play_flap()
 			if(velocity.y < 0):
 				velocity.y -= flap_strength * move_toward(1, 0, abs(min(0, velocity.y)) / max_flap_velocity)
 			else:
@@ -103,6 +111,7 @@ func check_enemy_hitbox():
 func take_damage(damage: int):
 	current_health -= damage
 	print("player lost %d health. health is now %d" % [damage, current_health])
+	_play_damage()
 	damage_animation(0.1)
 	
 	if current_health <= 0:
@@ -157,3 +166,12 @@ func get_max_fall_speed():
 	if(Input.is_action_pressed("dive")):
 		return max_dive_fall_speed
 	return max_fall_speed
+
+# SFX Helpers
+func _play_flap():
+	sfx.stream = sfx_flap
+	sfx.play()
+
+func _play_damage():
+	sfx.stream = sfx_damage
+	sfx.play()
