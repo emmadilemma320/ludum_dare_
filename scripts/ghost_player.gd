@@ -18,7 +18,11 @@ class_name GhostPlayer extends CharacterBody2D
 @export var dive_gravity: float
 @export var max_dive_fall_speed: float
 
-var max_health: int = 2
+var max_health: int = 2:
+	set(value):
+		var diff = max(0, value - max_health)
+		max_health = value
+		current_health += diff
 var current_health: int = 2
 var is_dead: bool
 var is_immune: bool 
@@ -111,6 +115,9 @@ func die():
 	is_dead = true
 	Global.player_dead = true
 	visible = false
+	for i in inventory.items.size() / 2:
+		inventory.items.shuffle()
+		inventory.remove_item(inventory.items.size() - 1 - i)
 	
 	print("player died")
 	respawn()
