@@ -18,8 +18,8 @@ class_name GhostPlayer extends CharacterBody2D
 @export var dive_gravity: float
 @export var max_dive_fall_speed: float
 
-var max_health: int = 100
-var current_health: int = 100
+var max_health: int = 2
+var current_health: int = 2
 var is_dead: bool
 var is_immune: bool 
 
@@ -116,9 +116,10 @@ func die():
 	respawn()
 	
 func respawn():
-	global_position = Global.spawn_pos.global_position
+	position = Global.spawn_pos.global_position
 	visible = true
 	is_dead = false
+	
 	Global.player_dead = false
 	is_immune = false
 	current_health = max_health

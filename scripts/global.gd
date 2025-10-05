@@ -1,7 +1,7 @@
 extends Node
 
 var player: CharacterBody2D
-var spawn_pos: Area2D
+var spawn_pos: Node2D
 
 var player_dead: bool
 var player_health: int

@@ -6,7 +6,7 @@ var dir: Vector2
 var player_detected: bool
 var player: CharacterBody2D
 
-var attack_damage: int = 10
+var attack_damage: int = 1
 
 var jump_away: bool
 

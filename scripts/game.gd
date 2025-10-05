@@ -1,6 +1,5 @@
 class_name Game extends Node2D
-
-@export var spawn_pos: Node2D
+@onready var spawn_pos: Node2D = $SpawnPos
 
 func _ready() -> void:
 	Global.spawn_pos = spawn_pos
