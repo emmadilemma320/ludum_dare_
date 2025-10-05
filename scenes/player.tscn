@@ -1,30 +1,55 @@
-[gd_scene load_steps=11 format=3 uid="uid://t8uj4rip1u3i"]
+[gd_scene load_steps=38 format=3 uid="uid://t8uj4rip1u3i"]
 
 [ext_resource type="Script" uid="uid://dvqn6wgm3ench" path="res://scripts/ghost_player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://co0yhkuxdin3y" path="res://assets/free_pigeon_assets_temp.png" id="3_dqkch"]
+[ext_resource type="Texture2D" uid="uid://c1jtolmija1a8" path="res://assets/crow.png" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://csubdq1gp7qj2" path="res://scripts/inventory.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://6p7npl0v8m22" path="res://Homebase/HBS_InventoryAdapter.gd" id="4_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
 radius = 6.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(32, 32, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("3_dqkch")
-region = Rect2(0, 96, 32, 32)
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("3_dqkch")
-region = Rect2(32, 96, 32, 32)
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
 atlas = ExtResource("3_dqkch")
-region = Rect2(64, 96, 32, 32)
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("3_dqkch")
-region = Rect2(96, 96, 32, 32)
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}],
+"loop": true,
+"name": &"Dive",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qlg0r")
@@ -37,11 +62,232 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}],
+"loop": false,
+"name": &"Flap",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Glide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}],
+"loop": true,
+"name": &"Ground",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Ground"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_3v2ag"]
+resource_name = "dive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Dive"]
+}
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "flap"
+length = 0.625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Flap"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.625),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 4]
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "glide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Glide"]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "idle_ground"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Ground"]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "walk_ground"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Ground"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"RESET": SubResource("Animation_dqkch"),
+&"dive": SubResource("Animation_3v2ag"),
+&"flap": SubResource("Animation_fjrip"),
+&"glide": SubResource("Animation_tuyoq"),
+&"idle_ground": SubResource("Animation_qhqgy"),
+&"walk_ground": SubResource("Animation_qlg0r")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fjrip"]
+animation = &"dive"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tuyoq"]
+animation = &"flap"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlg0r"]
+animation = &"glide"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhqgy"]
+animation = &"idle_ground"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
+animation = &"walk_ground"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qlg0r"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tuyoq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjrip"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smehm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ur7pv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y4r1p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d2wvv"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3v2ag"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jej6c"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhqgy"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fjrip"]
+states/dive/node = SubResource("AnimationNodeAnimation_fjrip")
+states/dive/position = Vector2(542.875, 264.262)
+states/flap/node = SubResource("AnimationNodeAnimation_tuyoq")
+states/flap/position = Vector2(700.25, 152.375)
+states/glide/node = SubResource("AnimationNodeAnimation_qlg0r")
+states/glide/position = Vector2(542.5, 152)
+states/idle_ground/node = SubResource("AnimationNodeAnimation_qhqgy")
+states/idle_ground/position = Vector2(363, 157)
+states/walk_ground/node = SubResource("AnimationNodeAnimation_dqkch")
+states/walk_ground/position = Vector2(364.5, 55.5)
+transitions = ["Start", "idle_ground", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "idle_ground", "walk_ground", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "walk_ground", "idle_ground", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle_ground", "glide", SubResource("AnimationNodeStateMachineTransition_smehm"), "glide", "idle_ground", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "glide", "flap", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "flap", "glide", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "glide", "dive", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "dive", "glide", SubResource("AnimationNodeStateMachineTransition_jej6c"), "flap", "dive", SubResource("AnimationNodeStateMachineTransition_qhqgy")]
+graph_offset = Vector2(443.88, 104.287)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 5.0
@@ -50,9 +296,14 @@ radius = 5.0
 script = ExtResource("1_g2els")
 ground_speed = 15.0
 fly_speed = 80.0
-rotate_speed = 80.0
-dive_speed_boost = 20.0
-flap_speed_boost = 50.0
+gravity = 40.0
+max_fall_speed = 20.0
+flap_gravity = 10.0
+flap_strength = 40.0
+max_flap_velocity = 150.0
+dive_strength = 150.0
+dive_gravity = 100.0
+max_dive_fall_speed = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0hol4")
@@ -66,15 +317,24 @@ script = ExtResource("3_qhqgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-autoplay = "default"
-frame_progress = 0.92413
+animation = &"Ground"
+autoplay = "Ground"
 
-[node name="FlapTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.2
-one_shot = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tuyoq")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_fjrip")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_qhqgy")
+debug_color = Color(0.958612, 0, 0.526185, 0.42)
+
+[node name="InventoryAdapter" type="Node2D" parent="."]
+script = ExtResource("4_dqkch")
+
