@@ -9,7 +9,7 @@ extends Control
 
 # ---------- RIGHT PANEL (under PanelPlayer) ----------
 @onready var items_vbox: VBoxContainer = $PanelPlayer/VBoxContainer/ScrollContainer/ItemsVBox
-@onready var sell_all_items_btn: Button = $PanelPlayer/VBoxContainer/HBoxContainer/Label/ButtonSellAllItems
+@onready var sell_all_items_btn: Button = $PanelPlayer/VBoxContainer/HBoxContainer/ButtonSellAllItems
 
 # (Optional SFX)
 @onready var sfx: AudioStreamPlayer = $SfxPlayer if has_node("SfxPlayer") else null
@@ -146,6 +146,7 @@ func _build_upgrades():
 
 # ---------------- RIGHT: build inventory (scrollable) ----------------
 func _build_inventory():
+	
 	for c in items_vbox.get_children():
 		c.queue_free()
 
@@ -164,40 +165,53 @@ func _build_inventory():
 		var id := String(it.get("id",""))
 		var qty := int(it.get("qty", 0))
 		var unit := int(it.get("unit_value", 0))
-		var total := qty * unit
+		var tex: Texture2D = it.get("icon", null)
 
 		var row := HBoxContainer.new()
 		row.custom_minimum_size = Vector2(0, 28)
+		
+		var icon_rect := TextureRect.new()
+		icon_rect.custom_minimum_size = Vector2(20, 20)
+		icon_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon_rect.size_flags_horizontal = 0  # don't steal space
+		icon_rect.size_flags_vertical = 0
+		if tex:
+			icon_rect.texture = tex
+		row.add_child(icon_rect)
 
 		var name_lbl := Label.new()
 		_style_label(name_lbl)
 		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		name_lbl.text = id
+		var parts := id.split("_")
+		if parts.size() == 2:
+			name_lbl.text = "%s %s" % [parts[1].capitalize(), parts[0].capitalize()]
+		else:
+			name_lbl.text = id.capitalize()
 		row.add_child(name_lbl)
 
 		var qty_lbl := Label.new()
 		_style_label(qty_lbl)
-		qty_lbl.custom_minimum_size = Vector2(70, 0)
+		qty_lbl.custom_minimum_size = Vector2(10, 0)
 		qty_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		qty_lbl.text = "x%d" % qty
 		row.add_child(qty_lbl)
 
 		var price_lbl := Label.new()
 		_style_label(price_lbl)
-		price_lbl.custom_minimum_size = Vector2(130, 0)
+		price_lbl.custom_minimum_size = Vector2(20, 0)
 		price_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		price_lbl.text = "@ %d (= %d)" % [unit, total]
+		price_lbl.text = str(unit)
 		row.add_child(price_lbl)
 
 		var sell1 := Button.new()
-		_style_button(sell1, 30, 16)
+		_style_button(sell1, 20, 13)
 		sell1.text = "Sell 1"
 		sell1.disabled = qty <= 0
 		sell1.pressed.connect(func(): _sell_item(id, 1))
 		row.add_child(sell1)
 
 		var sell_all := Button.new()
-		_style_button(sell_all, 30, 16)
+		_style_button(sell_all, 20, 13)
 		sell_all.text = "Sell All"
 		sell_all.disabled = qty <= 0
 		sell_all.pressed.connect(func(): _sell_item(id, qty))
