@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cej17ii1kyn05"]
+[gd_scene load_steps=6 format=3 uid="uid://cej17ii1kyn05"]
 
-[ext_resource type="Texture2D" uid="uid://d3jchc25qkbjh" path="res://assets/heart_placeholder.png" id="1_v30as"]
+[ext_resource type="Texture2D" uid="uid://dxxtnnbt10wdq" path="res://assets/hearts.png" id="1_v30as"]
+[ext_resource type="Script" uid="uid://b5bsfw3pdyft3" path="res://scenes/heart_UI.gd" id="2_ycbwg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycbwg"]
+atlas = ExtResource("1_v30as")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krgnv"]
+atlas = ExtResource("1_v30as")
+region = Rect2(0, 0, 16, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txm48"]
+atlas = ExtResource("1_v30as")
+region = Rect2(16, 0, 16, 0)
 
 [node name="1" type="TextureRect"]
-texture = ExtResource("1_v30as")
+texture = SubResource("AtlasTexture_ycbwg")
+script = ExtResource("2_ycbwg")
+filled_texture = SubResource("AtlasTexture_krgnv")
+empty_texture = SubResource("AtlasTexture_txm48")

@@ -348,5 +348,4 @@ script = ExtResource("4_dqkch")
 [node name="Inventory UI" parent="CanvasLayer" instance=ExtResource("5_tuyoq")]
 script = ExtResource("6_fjrip")
 
-[node name="HeartsUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_qlg0r")]
-player = NodePath("../..")
+[node name="HeartsUI" parent="CanvasLayer" instance=ExtResource("5_qlg0r")]
