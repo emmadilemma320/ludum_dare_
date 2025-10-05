@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=18 format=4 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bg55fw80edhf8" path="res://Homebase/merchant.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dr05l58s3l1c6" path="res://assets/nest.png" id="6_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dxosehf2lcqkq" path="res://scenes/human_thrower.tscn" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://cgfktqaks7oro" path="res://assets/layer2.png" id="10_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://b7jr4h86tyw3h" path="res://assets/layer1.png" id="10_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
@@ -376,13 +377,24 @@ position = Vector2(-272, 58)
 [node name="HumanThrower" parent="." instance=ExtResource("9_0tnpc")]
 position = Vector2(173, -54)
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="Close" type="Parallax2D" parent="."]
 z_index = -5
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(384, 0)
 repeat_times = 30
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-modulate = Color(0.51, 0.1887, 0.311865, 1)
-position = Vector2(0, 240)
+[node name="Sprite2D" type="Sprite2D" parent="Close"]
+modulate = Color(0.51, 0.1428, 0.22848, 1)
+position = Vector2(0, 260)
 texture = ExtResource("10_vtaks")
+
+[node name="Far" type="Parallax2D" parent="."]
+z_index = -6
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(384, 0)
+repeat_times = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="Far"]
+modulate = Color(0.84, 0.4116, 0.41874, 1)
+position = Vector2(0, 280)
+texture = ExtResource("10_kvpfn")
