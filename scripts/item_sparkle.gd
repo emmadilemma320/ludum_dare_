@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var timer: Timer = $Timer
 
 @export var item: Item
