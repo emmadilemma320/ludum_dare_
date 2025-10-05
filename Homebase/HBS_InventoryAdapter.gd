@@ -77,6 +77,7 @@ func has_upgrade(id: String) -> bool:
 func add_upgrade(id: String) -> void:
 	_owned_upgrades[id] = true
 	# Example: apply gameplay effects
+	# Triggered when buying +50 speed upgrade
 	if id == "upgrade_b" and player:
 		_apply_speed_bonus(50)
 			
@@ -101,7 +102,7 @@ func _get_item_price(it, id: String) -> int:
 
 	# fallback: lookup in price_map
 	return int(price_map.get(id, 0))
-		
+# Upgrade: +50 fly speed		
 func _apply_speed_bonus(amount: int) -> void:
 	var candidates := ["fly_speed"]
 	for prop in candidates:

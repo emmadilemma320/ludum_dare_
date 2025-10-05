@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://t8uj4rip1u3i"]
+[gd_scene load_steps=12 format=3 uid="uid://t8uj4rip1u3i"]
 
 [ext_resource type="Script" uid="uid://dvqn6wgm3ench" path="res://scripts/ghost_player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://co0yhkuxdin3y" path="res://assets/free_pigeon_assets_temp.png" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://csubdq1gp7qj2" path="res://scripts/inventory.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://6p7npl0v8m22" path="res://Homebase/HBS_InventoryAdapter.gd" id="4_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
 radius = 6.0
@@ -78,3 +79,6 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_qhqgy")
+
+[node name="InventoryAdapter" type="Node2D" parent="."]
+script = ExtResource("4_dqkch")
