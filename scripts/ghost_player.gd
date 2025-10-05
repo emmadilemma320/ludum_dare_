@@ -46,19 +46,26 @@ func _physics_process(delta: float) -> void:
 	if(x_dir > 0): sprite.scale.x = 1
 	elif(x_dir < 0): sprite.scale.x = -1
 	
-	print(inventory.items)
+	# print(inventory.items)
 	
 	check_enemy_hitbox()
 
 func check_enemy_hitbox():
 	var enemy_hitboxes = $Hitbox.get_overlapping_areas()
 	var damage: int
-	for enemy_hitbox in enemy_hitboxes:
-		if enemy_hitbox.get_parent() is CrowEnemy:
-			damage = Global.enemy_crow_attack
+	var enemy
+	
+	if len(enemy_hitboxes) == 0:
+		return
+	
+	var enemy_hitbox = enemy_hitboxes[0]
+	enemy = enemy_hitbox.get_parent()
+	if enemy is CrowEnemy:
+		damage = Global.enemy_crow_attack
 	
 	if !is_immune:
 		take_damage(damage)
+		enemy.jump_back()
 		
 func take_damage(damage: int):
 	current_health -= damage
@@ -75,6 +82,9 @@ func immunity_cooldown(seconds: int):
 	is_immune = true
 	await get_tree().create_timer(seconds).timeout
 	is_immune = false
+	
+func death_animation():
+	"""TODO"""
 
 func get_speed() -> float:
 	var boost = 0
