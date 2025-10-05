@@ -77,7 +77,7 @@ size = Vector2(476, 20)
 position = Vector2(22, -17)
 
 [node name="ItemSparkle" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(80, 31)
+position = Vector2(80, 48)
 item = ExtResource("4_lbhrr")
 
 [node name="Map" type="TileMapLayer" parent="."]

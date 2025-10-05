@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dt5i4kf806ina" path="res://scripts/item_sparkle.gd" id="1_pnip5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnip5"]
-radius = 16.0312
+radius = 6.0
 
 [node name="ItemSparkle" type="Area2D"]
 monitorable = false
