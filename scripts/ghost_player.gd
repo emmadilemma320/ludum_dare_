@@ -58,9 +58,11 @@ func _physics_process(delta: float) -> void:
 			velocity.y -= flap_strength * move_toward(1, 0, abs(min(0, velocity.y)) / max_flap_velocity)
 		else:
 			velocity.y = -flap_strength
+		_play_flap()
 	
 	if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength):
 		velocity.y = dive_strength
+		_play_dive()
 		
 	velocity.y = move_toward(velocity.y, get_max_fall_speed(), get_curr_gravity() * delta)
 
