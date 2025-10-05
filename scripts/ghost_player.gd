@@ -19,6 +19,7 @@ var is_immune: bool
 func _ready() -> void:
 	Global.player = self
 	is_dead = false
+	Global.player_dead = false
 	is_immune = false
 
 func _physics_process(delta: float) -> void:
@@ -62,9 +63,18 @@ func check_enemy_hitbox():
 func take_damage(damage: int):
 	current_health -= damage
 	print("player lost %d health. health is now %d" % [damage, current_health])
+	
 	if current_health <= 0:
 		current_health = 0
 		is_dead = true
+		Global.player_dead = true
+		
+	immunity_cooldown(1.0)
+
+func immunity_cooldown(seconds: int):
+	is_immune = true
+	await get_tree().create_timer(seconds).timeout
+	is_immune = false
 
 func get_speed() -> float:
 	var boost = 0
