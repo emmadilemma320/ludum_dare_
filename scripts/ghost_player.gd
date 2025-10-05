@@ -5,6 +5,7 @@ class_name GhostPlayer extends CharacterBody2D
 @onready var playback: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var can_move: bool = true
 @export var ground_speed: float
 @export var fly_speed: float
 @export var gravity: float
@@ -45,28 +46,27 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var x_dir = Input.get_axis("left", "right")
 	
-	if !is_dead:
-		velocity.x = x_dir * get_speed()
-		
-		if(Input.is_action_just_pressed("flap")):
-			playback.travel("flap")
-			playback.start("flap", true)
-			_play_flap()
-			if(velocity.y < 0):
-				velocity.y -= flap_strength * move_toward(1, 0, abs(min(0, velocity.y)) / max_flap_velocity)
-			else:
-				velocity.y = -flap_strength
-		
-		if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength):
-			velocity.y = dive_strength
-			_play_dive()
-			
-		check_enemy_hitbox()
-		animate(x_dir)
+	if not can_move: return
+	if is_dead: return
+	
+	velocity.x = x_dir * get_speed()
+	
+	if(Input.is_action_just_pressed("flap")):
+		playback.travel("flap")
+		playback.start("flap", true)
+		if(velocity.y < 0):
+			velocity.y -= flap_strength * move_toward(1, 0, abs(min(0, velocity.y)) / max_flap_velocity)
+		else:
+			velocity.y = -flap_strength
+	
+	if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength):
+		velocity.y = dive_strength
 		
 	velocity.y = move_toward(velocity.y, get_max_fall_speed(), get_curr_gravity() * delta)
 
 	move_and_slide()
+	check_enemy_hitbox()
+	animate(x_dir)
 
 func animate(x_dir):
 	if(x_dir > 0): sprite.scale.x = 1
@@ -92,6 +92,13 @@ func animate(x_dir):
 		return
 		
 	playback.travel("glide")
+
+func peck():
+	playback.travel("peck")
+	animation_player.play("peck")
+	can_move = false
+	await animation_player.animation_finished
+	can_move = true
 
 func check_enemy_hitbox():
 	var enemy_hitboxes = $Hitbox.get_overlapping_areas()

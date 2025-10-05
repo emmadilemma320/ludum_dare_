@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://t8uj4rip1u3i"]
+[gd_scene load_steps=46 format=3 uid="uid://t8uj4rip1u3i"]
 
 [ext_resource type="Script" uid="uid://dvqn6wgm3ench" path="res://scripts/ghost_player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://c1jtolmija1a8" path="res://assets/crow.png" id="3_dqkch"]
@@ -37,6 +37,10 @@ region = Rect2(16, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("3_dqkch")
 region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("3_dqkch")
+region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
 atlas = ExtResource("3_dqkch")
@@ -78,6 +82,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Glide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}],
+"loop": false,
+"name": &"Grab",
 "speed": 5.0
 }, {
 "frames": [{
@@ -201,6 +213,22 @@ tracks/0/keys = {
 "values": [&"Ground"]
 }
 
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "peck"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Grab"]
+}
+
 [sub_resource type="Animation" id="Animation_qlg0r"]
 resource_name = "walk_ground"
 length = 0.5
@@ -237,6 +265,7 @@ _data = {
 &"flap": SubResource("Animation_fjrip"),
 &"glide": SubResource("Animation_tuyoq"),
 &"idle_ground": SubResource("Animation_qhqgy"),
+&"peck": SubResource("Animation_smehm"),
 &"walk_ground": SubResource("Animation_qlg0r")
 }
 
@@ -251,6 +280,9 @@ animation = &"glide"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhqgy"]
 animation = &"idle_ground"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ur7pv"]
+animation = &"peck"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
 animation = &"walk_ground"
@@ -277,7 +309,13 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhqgy"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f1ej7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oprun"]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fjrip"]
+states/Start/position = Vector2(201, 100)
 states/dive/node = SubResource("AnimationNodeAnimation_fjrip")
 states/dive/position = Vector2(542.875, 264.262)
 states/flap/node = SubResource("AnimationNodeAnimation_tuyoq")
@@ -286,10 +324,12 @@ states/glide/node = SubResource("AnimationNodeAnimation_qlg0r")
 states/glide/position = Vector2(541.438, 154.688)
 states/idle_ground/node = SubResource("AnimationNodeAnimation_qhqgy")
 states/idle_ground/position = Vector2(363, 157)
+states/peck/node = SubResource("AnimationNodeAnimation_ur7pv")
+states/peck/position = Vector2(342.88, 271.946)
 states/walk_ground/node = SubResource("AnimationNodeAnimation_dqkch")
 states/walk_ground/position = Vector2(364.5, 55.5)
-transitions = ["Start", "idle_ground", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "idle_ground", "walk_ground", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "walk_ground", "idle_ground", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle_ground", "glide", SubResource("AnimationNodeStateMachineTransition_smehm"), "glide", "idle_ground", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "glide", "flap", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "flap", "glide", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "glide", "dive", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "dive", "glide", SubResource("AnimationNodeStateMachineTransition_jej6c"), "flap", "dive", SubResource("AnimationNodeStateMachineTransition_qhqgy")]
-graph_offset = Vector2(32.88, 0.629519)
+transitions = ["Start", "idle_ground", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "idle_ground", "walk_ground", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "walk_ground", "idle_ground", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle_ground", "glide", SubResource("AnimationNodeStateMachineTransition_smehm"), "glide", "idle_ground", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "glide", "flap", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "flap", "glide", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "glide", "dive", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "dive", "glide", SubResource("AnimationNodeStateMachineTransition_jej6c"), "flap", "dive", SubResource("AnimationNodeStateMachineTransition_qhqgy"), "idle_ground", "peck", SubResource("AnimationNodeStateMachineTransition_f1ej7"), "peck", "idle_ground", SubResource("AnimationNodeStateMachineTransition_oprun")]
+graph_offset = Vector2(6.88, 86.6295)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 5.0
@@ -324,7 +364,6 @@ script = ExtResource("3_qhqgy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
 animation = &"Ground"
-autoplay = "Ground"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

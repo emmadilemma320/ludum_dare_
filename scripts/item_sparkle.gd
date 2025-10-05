@@ -21,14 +21,15 @@ static var stateTimes: Dictionary[States, float] = {
 func _start():
 	timer.wait_time = stateTimes[state]
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if state == States.APPEARING: process_state(0, 1, States.SPARKLING)
 	elif state == States.SPARKLING: process_state(1, 1, States.DISAPPEARING)
 	elif state == States.DISAPPEARING: process_state(1, 0, States.HIDDEN)
 	elif state == States.HIDDEN: process_state(0, 0, States.APPEARING)
 	
-	if player_in_area and Input.is_action_just_pressed("interact"):
+	if player_in_area and player.is_on_floor() and Input.is_action_just_pressed("interact"):
 		player.inventory.add_item(item)
+		player.peck()
 		monitoring = false
 		player_in_area = false
 		queue_free()
