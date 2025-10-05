@@ -309,7 +309,7 @@ max_dive_fall_speed = 300.0
 shape = SubResource("CircleShape2D_0hol4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="Inventory" type="Node" parent="."]
