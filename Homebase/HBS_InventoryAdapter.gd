@@ -86,6 +86,8 @@ func add_upgrade(id: String) -> void:
 		__apply_dive_bonus(50)
 	if id == "upgrade_d" and player:
 		__apply_flap_bonus(20)
+	if id == "upgrade_e" and player:
+		__apply_hover_bonus(-10)
 			
 # ---- helpers ----
 func _get_item_id(it) -> String:
@@ -140,6 +142,14 @@ func __apply_flap_bonus(amount: int) -> void:
 		if typeof(val) == TYPE_INT or typeof(val) == TYPE_FLOAT:
 			player.set(prop, val + amount)
 			print("Flap strength up! New %s = %s" % [prop, player.get(prop)])
+			return
+func __apply_hover_bonus(amount: int) -> void:
+	var candidates := ["gravity"]
+	for prop in candidates:
+		var val = player.get(prop)
+		if typeof(val) == TYPE_INT or typeof(val) == TYPE_FLOAT:
+			player.set(prop, val + amount)
+			print("Hover time up! New %s = %s" % [prop, player.get(prop)])
 			return
 func _ready():
 	if player == null and get_parent() != null:
