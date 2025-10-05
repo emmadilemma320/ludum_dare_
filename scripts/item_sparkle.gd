@@ -2,7 +2,6 @@ class_name ItemSparkle extends Area2D
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var timer: Timer = $Timer
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var item: Item
 
@@ -29,9 +28,10 @@ func _physics_process(delta: float) -> void:
 	elif state == States.HIDDEN: process_state(0, 0, States.APPEARING)
 	
 	if player_in_area and player.is_on_floor() and Input.is_action_just_pressed("interact"):
+		player.inventory.add_item(item)
+		
 		if(player.inventory.is_full()): return
 		
-		player.inventory.add_item(item)
 		player.peck()
 		monitoring = false
 		player_in_area = false

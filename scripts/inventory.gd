@@ -42,5 +42,6 @@ func _play_item():
 	sfx.stream = sfx_item
 	sfx.play()
 func _play_full():
+	if(sfx.playing): return
 	sfx.stream = sfx_full
 	sfx.play()
