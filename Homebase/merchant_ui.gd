@@ -12,7 +12,7 @@ extends Control
 @onready var sell_all_items_btn: Button = $PanelPlayer/VBoxContainer/HBoxContainer/ButtonSellAllItems
 
 # (Optional SFX)
-@onready var sfx: AudioStreamPlayer = $SfxPlayer if has_node("SfxPlayer") else null
+@onready var sfx: AudioStreamPlayer = $MerchantSFX if has_node("MerchantSFX") else null
 
 # Merchant catalog (edit freely)
 # Add rows: 
@@ -21,6 +21,9 @@ extends Control
 # ----- Font you want to use -----
 var _font: FontFile = preload("res://Homebase/tiny.ttf")  # <-- change path
 var _font_size := 6  # pick what you want (8–12 usually looks clean)
+# Preload sounds once
+var sfx_buy = preload("res://Homebase/purchasesuccess.mp3")
+var sfx_sell = preload("res://Homebase/coindrop.mp3")
 
 var UPGRADE_DEFS := [
 	{ "id": "upgrade_a", "icon": "res://Homebase/icon.png", "label": "Health LV1", "price": 500 },
@@ -76,18 +79,20 @@ func _on_balance_changed(_new := 0) -> void:
 	_build_upgrades()
 
 func _refresh_title(_n := 0) -> void:
-	title_label.text = "Coins Collected: %d" % HbsWallet.get_balance()
+	title_label.text = "Collector's Trinket Shop          Coins Collected: %d" % HbsWallet.get_balance()
 
 # ---------------- Actions ----------------
 func _on_sell_all_items_global() -> void:
 	if inventory_ref:
 		HbsShopService.sell_all(inventory_ref)
+		_play_sell()
 
 func _try_buy_upgrade(id: String, price: int) -> void:
 	if not inventory_ref:
 		HbsShopService.purchase_failed.emit("No inventory.")
 		return
 	HbsShopService.buy_upgrade(inventory_ref, id, price)
+	_play_buy()
 
 # ---------------- LEFT: build upgrades (scrollable) ----------------
 func _build_upgrades():
@@ -222,3 +227,15 @@ func _build_inventory():
 func _sell_item(id: String, n: int) -> void:
 	if inventory_ref:
 		HbsShopService.sell_item(inventory_ref, id, n)
+		_play_sell()
+# SFX Helpers
+func _play_buy():
+	sfx.stream = sfx_buy
+	sfx.play()
+
+func _play_sell():
+	sfx.stream = sfx_sell
+	sfx.play()
+	
+
+	
