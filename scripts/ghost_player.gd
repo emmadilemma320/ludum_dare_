@@ -24,6 +24,7 @@ class_name GhostPlayer extends CharacterBody2D
 # Preload sounds once
 var sfx_flap = preload("res://assets/wingflap.mp3")
 var sfx_damage = preload("res://assets/damage.wav")
+var sfx_diving = preload("res://assets/diving.mp3")
 
 var max_health: int = 2:
 	set(value):
@@ -58,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		
 		if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength):
 			velocity.y = dive_strength
+			_play_dive()
 			
 		check_enemy_hitbox()
 		animate(x_dir)
@@ -174,4 +176,8 @@ func _play_flap():
 
 func _play_damage():
 	sfx.stream = sfx_damage
+	sfx.play()
+	
+func _play_dive():
+	sfx.stream = sfx_diving
 	sfx.play()
