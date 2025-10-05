@@ -4,4 +4,3 @@
 
 [node name="ItemSpawn" type="Node2D" groups=["item_spawn"]]
 script = ExtResource("1_rtdei")
-spawn_chance = 0.5

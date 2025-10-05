@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://c3rjuxad4tfuo"]
+
+[ext_resource type="AudioStream" uid="uid://cxr461p16fgbp" path="res://assets/getitem.mp3" id="1_2sm81"]
+
+[resource]
+random_pitch = 1.2
+random_volume_offset_db = 0.2
+streams_count = 1
+stream_0/stream = ExtResource("1_2sm81")

@@ -23,9 +23,9 @@ var can_move: bool = true
 @onready var sfx: AudioStreamPlayer = $PlayerSFX if has_node("PlayerSFX") else null
 
 # Preload sounds once
-var sfx_flap = preload("res://assets/wingflap.mp3")
-var sfx_damage = preload("res://assets/damage.wav")
-var sfx_diving = preload("res://assets/diving.mp3")
+var sfx_flap = preload("res://assets/sfx/flap.tres")
+var sfx_damage = preload("res://assets/sfx/damage.tres")
+var sfx_diving = preload("res://assets/sfx/diving.tres")
 
 var max_health: int = 2:
 	set(value):

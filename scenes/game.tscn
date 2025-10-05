@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=17 format=4 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -8,13 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dxosehf2lcqkq" path="res://scenes/human_thrower.tscn" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cu1tqo3x8hl2c" path="res://scenes/item_spawn.tscn" id="9_dinhu"]
 [ext_resource type="Texture2D" uid="uid://cgfktqaks7oro" path="res://assets/layer2.png" id="10_kvpfn"]
-[ext_resource type="Script" uid="uid://vp7yedolsvk6" path="res://scripts/item.gd" id="10_kvuet"]
 [ext_resource type="Texture2D" uid="uid://b7jr4h86tyw3h" path="res://assets/layer1.png" id="10_vtaks"]
-[ext_resource type="Resource" uid="uid://ddp0rkfrwqdt" path="res://items/coins/rusted_coin.tres" id="11_trtic"]
-[ext_resource type="Resource" uid="uid://nek3chdy70fc" path="res://items/necklaces/rusted_necklace.tres" id="12_ir15t"]
-[ext_resource type="Resource" uid="uid://do4a43rffse5a" path="res://items/coins/copper_coin.tres" id="13_trtic"]
-[ext_resource type="Resource" uid="uid://d3qanldqcqcrm" path="res://items/necklaces/copper_necklace.tres" id="14_ir15t"]
-[ext_resource type="Resource" uid="uid://debbpc3ncgox" path="res://items/necklaces/silver_necklace.tres" id="15_ir15t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
 texture = ExtResource("6_u5sy4")
@@ -392,53 +386,21 @@ texture = ExtResource("10_kvpfn")
 
 [node name="ItemSpawn" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
 position = Vector2(80, 48)
-spawn_chances = Dictionary[float, ExtResource("10_kvuet")]({
-0.0: ExtResource("11_trtic"),
-0.9: ExtResource("12_ir15t")
-})
-spawn_chance = 0.6
 
 [node name="ItemSpawn2" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
 position = Vector2(144, 64)
-spawn_chances = Dictionary[float, ExtResource("10_kvuet")]({
-0.0: ExtResource("11_trtic"),
-0.9: ExtResource("12_ir15t")
-})
-spawn_chance = 0.6
 
 [node name="ItemSpawn3" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
 position = Vector2(224, 64)
-spawn_chances = Dictionary[float, ExtResource("10_kvuet")]({
-0.0: ExtResource("11_trtic"),
-0.9: ExtResource("12_ir15t")
-})
-spawn_chance = 0.6
 
 [node name="ItemSpawn4" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
 position = Vector2(363, -16)
-spawn_chances = Dictionary[float, ExtResource("10_kvuet")]({
-0.0: ExtResource("11_trtic"),
-0.9: ExtResource("12_ir15t")
-})
-spawn_chance = 0.6
 
 [node name="ItemSpawn5" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
 position = Vector2(363, 64)
-spawn_chances = Dictionary[float, ExtResource("10_kvuet")]({
-0.0: ExtResource("13_trtic"),
-0.3: ExtResource("14_ir15t"),
-0.9: ExtResource("15_ir15t")
-})
-spawn_chance = 0.6
 
 [node name="ItemSpawn6" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
 position = Vector2(668, 31)
-spawn_chances = Dictionary[float, ExtResource("10_kvuet")]({
-0.0: ExtResource("12_ir15t"),
-0.5: ExtResource("13_trtic"),
-0.7: ExtResource("14_ir15t")
-})
-spawn_chance = 0.6
 
 [node name="HomeBase" type="Area2D" parent="."]
 position = Vector2(-312, 26)

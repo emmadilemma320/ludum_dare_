@@ -23,8 +23,8 @@ extends Control
 var _font: FontFile = preload("res://Homebase/tiny.ttf")  # <-- change path
 var _font_size := 6  # pick what you want (8–12 usually looks clean)
 # Preload sounds once
-var sfx_buy = preload("res://Homebase/purchasesuccess.mp3")
-var sfx_sell = preload("res://Homebase/coindrop.mp3")
+var sfx_buy = preload("res://Homebase/purchase_success.tres")
+var sfx_sell = preload("res://Homebase/coin_drop.tres")
 
 var UPGRADE_DEFS := [
 	{ "id": "upgrade_a", "icon": "res://Homebase/Health.png", "label": "Heart of Gold (HP+)", "price": 100 },
