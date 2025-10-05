@@ -123,7 +123,7 @@ func _build_upgrades():
 
 		var price_lbl := Label.new()
 		_style_label(price_lbl)
-		price_lbl.custom_minimum_size = Vector2(60, 0)
+		price_lbl.custom_minimum_size = Vector2(40, 0)
 		price_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		price_lbl.text = "%d" % price
 		row.add_child(price_lbl)
