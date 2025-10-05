@@ -486,6 +486,7 @@ cache/0/8/0/glyphs/76/uv_rect = Rect2(135, 1, 4, 9)
 cache/0/8/0/glyphs/76/texture_idx = 0
 
 [node name="MerchantUI" type="Control"]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_left = 73.0
