@@ -96,10 +96,10 @@ func check_enemy_hitbox():
 	if enemy is CrowEnemy:
 		damage = Global.enemy_crow_attack
 	
-	if !is_immune:
-		take_damage(damage)
-		enemy.jump_back()
-		
+		if !is_immune:
+			take_damage(damage)
+			enemy.jump_back()
+
 func take_damage(damage: int):
 	current_health -= damage
 	print("player lost %d health. health is now %d" % [damage, current_health])

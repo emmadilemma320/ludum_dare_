@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwaq4aqf8wver"]
+
+[ext_resource type="Texture2D" uid="uid://djhdj3kg6ibwa" path="res://assets/items.png" id="1_rsek8"]
+[ext_resource type="Script" uid="uid://dmtjcsk0kkahm" path="res://scenes/thrown_object.gd" id="1_tyihs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyihs"]
+atlas = ExtResource("1_rsek8")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsek8"]
+radius = 4.0
+
+[node name="ThrownObject" type="Node2D"]
+script = ExtResource("1_tyihs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_tyihs")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rsek8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

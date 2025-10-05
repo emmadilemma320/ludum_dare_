@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=17 format=4 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://pfqay6ok4qi0" path="res://assets/tileset_garbage.png" id="6_gee14"]
 [ext_resource type="PackedScene" uid="uid://bg55fw80edhf8" path="res://Homebase/merchant.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dr05l58s3l1c6" path="res://assets/nest.png" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dxosehf2lcqkq" path="res://scenes/human_thrower.tscn" id="9_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
 texture = ExtResource("6_u5sy4")
@@ -357,7 +358,6 @@ tile_map_data = PackedByteArray("AAA0AP//AAAEAAMAAAA0AAAAAAAEAAMAAAAzAP//AAAEAAM
 tile_set = SubResource("TileSet_0tnpc")
 
 [node name="EnemyGround" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -376,3 +376,6 @@ shape = SubResource("WorldBoundaryShape2D_vtaks")
 
 [node name="SpawnPos" type="Node2D" parent="."]
 position = Vector2(-272, 58)
+
+[node name="HumanThrower" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(173, -54)

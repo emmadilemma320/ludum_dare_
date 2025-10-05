@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxosehf2lcqkq"]
+
+[ext_resource type="Texture2D" uid="uid://bmyrur4f2f2pr" path="res://assets/crow_shopkeep.png" id="1_aesxe"]
+[ext_resource type="Script" uid="uid://b010qiliskxf0" path="res://scripts/thrower.gd" id="1_uweyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uweyp"]
+atlas = ExtResource("1_aesxe")
+region = Rect2(0, 0, 16, 16)
+
+[node name="HumanThrower" type="Node2D"]
+script = ExtResource("1_uweyp")
+max_dist = 200.0
+throw_speed = 100.0
+min_throw_delay = 1.0
+max_throw_delay = 1.5
+prediction_max_offset = 60.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_uweyp")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="ThrowTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ThrowTimer" to="." method="_on_throw_timer_timeout"]

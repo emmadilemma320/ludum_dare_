@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnfv7wmshk2bn"]
+
+[ext_resource type="Script" uid="uid://cr2rrsd71kbif" path="res://scripts/inventory_ui.gd" id="1_hhucr"]
+
+[node name="Inventory UI" type="HBoxContainer"]
+layout_direction = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -881.0
+offset_top = -39.0
+offset_right = -753.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3, 3)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = ExtResource("1_hhucr")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
