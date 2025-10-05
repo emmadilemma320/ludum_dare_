@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bhwxlfs6t588v"]
+
+[ext_resource type="Script" uid="uid://vp7yedolsvk6" path="res://scripts/item.gd" id="1_xnewb"]
+[ext_resource type="Texture2D" uid="uid://djhdj3kg6ibwa" path="res://assets/items.png" id="2_g1p2w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc78p"]
+atlas = ExtResource("2_g1p2w")
+region = Rect2(8, 16, 8, 8)
+
+[resource]
+script = ExtResource("1_xnewb")
+type = "Ring"
+rarity = 2
+texture = SubResource("AtlasTexture_oc78p")
+metadata/_custom_type_script = "uid://vp7yedolsvk6"

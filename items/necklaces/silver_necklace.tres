@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://debbpc3ncgox"]
+
+[ext_resource type="Script" uid="uid://vp7yedolsvk6" path="res://scripts/item.gd" id="1_x0pv3"]
+[ext_resource type="Texture2D" uid="uid://djhdj3kg6ibwa" path="res://assets/items.png" id="2_1nl5u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd1cu"]
+atlas = ExtResource("2_1nl5u")
+region = Rect2(24, 16, 8, 8)
+
+[resource]
+script = ExtResource("1_x0pv3")
+type = "Necklace"
+rarity = 2
+texture = SubResource("AtlasTexture_qd1cu")
+metadata/_custom_type_script = "uid://vp7yedolsvk6"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://blwvyqck661ea"]
+
+[ext_resource type="Script" uid="uid://vp7yedolsvk6" path="res://scripts/item.gd" id="1_2tgyf"]
+[ext_resource type="Texture2D" uid="uid://djhdj3kg6ibwa" path="res://assets/items.png" id="2_bbfwm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16cmr"]
+atlas = ExtResource("2_bbfwm")
+region = Rect2(16, 8, 8, 8)
+
+[resource]
+script = ExtResource("1_2tgyf")
+type = "Watch"
+rarity = 1
+texture = SubResource("AtlasTexture_16cmr")
+metadata/_custom_type_script = "uid://vp7yedolsvk6"
