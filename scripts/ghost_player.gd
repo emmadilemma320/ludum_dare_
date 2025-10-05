@@ -1,15 +1,22 @@
 class_name GhostPlayer extends CharacterBody2D
+
 @onready var inventory: Inventory = $Inventory
-@onready var flap_timer: Timer = $FlapTimer
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var playback: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var ground_speed: float
 @export var fly_speed: float
-@export var rotate_speed: float
-@export var dive_speed_boost: float
-@export var flap_speed_boost: float
-var angle: float = 10 # in deg
-var target_angle: float = 10
+@export var gravity: float
+@export var max_fall_speed: float
+@export_category("flapping")
+@export var flap_gravity: float
+@export var flap_strength: float
+@export var max_flap_velocity: float
+@export_category("diving")
+@export var dive_strength: float
+@export var dive_gravity: float
+@export var max_dive_fall_speed: float
 
 var max_health: int = 100
 var current_health: int = 100
@@ -23,31 +30,50 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var x_dir = Input.get_axis("left", "right")
+	velocity.x = x_dir * get_speed()
 	
 	if(Input.is_action_just_pressed("flap")):
-		angle = -30
-		target_angle = -50
-		flap_timer.start() 
+		playback.travel("flap")
+		playback.start("flap", true)
+		if(velocity.y < 0):
+			velocity.y -= flap_strength * move_toward(1, 0, abs(min(0, velocity.y)) / max_flap_velocity)
+		else:
+			velocity.y = -flap_strength
 	
-	if not flapping():
-		if(diving()):
-			target_angle = 70
-			angle = 50
-		else: 
-			target_angle = 10
+	if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength):
+		velocity.y = dive_strength
 	
-	angle = move_toward(angle, target_angle, rotate_speed * delta)
-	
-	velocity = get_forward() * get_speed()
-	velocity.x *= x_dir
+	velocity.y = move_toward(velocity.y, get_max_fall_speed(), get_curr_gravity() * delta)
+
 	move_and_slide()
+	check_enemy_hitbox()
 	
+	animate(x_dir)
+
+func animate(x_dir):
 	if(x_dir > 0): sprite.scale.x = 1
 	elif(x_dir < 0): sprite.scale.x = -1
 	
-	print(inventory.items)
+	sprite.rotation = 0
 	
-	check_enemy_hitbox()
+	if(is_on_floor()):
+		if(velocity.x): 
+			playback.travel("walk_ground")
+			return
+		playback.travel("idle_ground")
+		return
+	
+	if(velocity.y > max_fall_speed + 10):
+		playback.travel("dive")
+		var dir = velocity.normalized()
+		sprite.rotation = dir.angle() - PI / 2
+		return
+
+	if(playback.get_current_node() == "flap"):
+		playback.travel("glide")
+		return
+		
+	playback.travel("glide")
 
 func check_enemy_hitbox():
 	var enemy_hitboxes = $Hitbox.get_overlapping_areas()
@@ -66,21 +92,19 @@ func take_damage(damage: int):
 		current_health = 0
 		is_dead = true
 
+func get_curr_gravity() -> float:
+	if(Input.is_action_pressed("dive")): 
+		return dive_gravity
+	if(Input.is_action_pressed("flap") and velocity.y < 0):
+		return flap_gravity
+	return gravity
+
 func get_speed() -> float:
-	var boost = 0
-	
-	if(diving()): boost = dive_speed_boost
-	if(flapping()): boost = flap_speed_boost
-	
 	if(is_on_floor()):
-		return ground_speed + boost
-	return fly_speed + boost
+		return ground_speed
+	return fly_speed
 
-func get_forward() -> Vector2:
-	return Vector2.from_angle(deg_to_rad(angle))
-
-func flapping() -> bool:
-	return flap_timer.time_left > 0
-
-func diving() -> bool:
-	return Input.is_action_pressed("dive")
+func get_max_fall_speed():
+	if(Input.is_action_pressed("dive")):
+		return max_dive_fall_speed
+	return max_fall_speed
