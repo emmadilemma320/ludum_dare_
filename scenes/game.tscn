@@ -327,7 +327,7 @@ normal = Vector2(0, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_yqjtg")]
 z_index = 5
-position = Vector2(-200, -78)
+position = Vector2(-250, 53)
 
 [node name="CrowEnemy" parent="." instance=ExtResource("2_lnu2h")]
 z_index = 5
