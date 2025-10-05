@@ -63,6 +63,7 @@ frame_progress = 0.40326
 shape = SubResource("CircleShape2D_pnip5")
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
