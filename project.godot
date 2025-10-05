@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 
 version_control/canvas_textures/default_texture_filter=0
 
+[global_group]
+
+item_spawn=""
+
 [input]
 
 left={

@@ -1,4 +1,4 @@
-extends Area2D
+class_name ItemSparkle extends Area2D
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var timer: Timer = $Timer

@@ -7,3 +7,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.player_dead:
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
+
+func _on_home_base_body_exited(body: Node2D) -> void:
+	if not (body is GhostPlayer): return
+	
+	get_tree().call_group("item_spawn", "try_spawn")
