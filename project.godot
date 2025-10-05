@@ -21,6 +21,10 @@ Global="*res://scripts/global.gd"
 HbsShopService="*res://Homebase/HBS_ShopService.gd"
 HbsWallet="*res://Homebase/HBS_Wallet.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 left={
