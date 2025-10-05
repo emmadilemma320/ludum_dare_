@@ -9,3 +9,6 @@ var player_hitbox: Area2D
 
 var enemy_crow_hitbox: Area2D
 var enemy_crow_attack: int
+
+var start_pos: float
+var end_pos: float

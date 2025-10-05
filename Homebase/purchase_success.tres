@@ -1,9 +1,9 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://bbf65hj7gecfl"]
 
-[ext_resource type="AudioStream" uid="uid://0j0ebohw0rph" path="res://assets/damage.wav" id="1_px55r"]
+[ext_resource type="AudioStream" uid="uid://b30gjei1ohc6a" path="res://Homebase/purchasesuccess.mp3" id="1_7bvhh"]
 
 [resource]
 random_pitch = 1.2
 random_volume_offset_db = 0.2
 streams_count = 1
-stream_0/stream = ExtResource("1_px55r")
+stream_0/stream = ExtResource("1_7bvhh")

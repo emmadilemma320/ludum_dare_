@@ -66,5 +66,16 @@ func try_spawn():
 	sparkle.state = sparkle.States.keys()[randi() % sparkle.States.size()]
 	print(sparkle.item)
 
-static func pick_item(position: Vector2) -> Item:
-	return COPPER_COIN
+static func pick_item(pos: Vector2) -> Item:
+	var dist:float = (pos.x - Global.start_pos) / (Global.end_pos - Global.start_pos)
+	
+	return get_item_choices_at_percent(dist).pick_random()
+
+static func get_item_choices_at_percent(percent: float) -> Array[Item]:
+	var array: Array[Item] = []
+	for key in ranges.keys():
+		var vector = ranges[key]
+		if(percent > vector.x and percent < vector.y): 
+			array.append(key)
+	
+	return array

@@ -1,6 +1,6 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://c112gfv8r22hl"]
 
-[ext_resource type="AudioStream" uid="uid://deoansdorg1mw" path="res://assets/diving.mp3" id="1_xk3rp"]
+[ext_resource type="AudioStream" uid="uid://dmwyskcxl3x6q" path="res://assets/fullinventory.mp3" id="1_xk3rp"]
 
 [resource]
 random_pitch = 1.2

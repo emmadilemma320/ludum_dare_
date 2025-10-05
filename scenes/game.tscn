@@ -402,10 +402,64 @@ position = Vector2(363, 64)
 [node name="ItemSpawn6" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
 position = Vector2(668, 31)
 
+[node name="ItemSpawn7" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(818, 16)
+
+[node name="ItemSpawn8" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(882, 32)
+
+[node name="ItemSpawn9" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(933, 32)
+
+[node name="ItemSpawn10" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(979, -48)
+
+[node name="ItemSpawn11" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(1159, -16)
+
+[node name="ItemSpawn12" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(1225, 64)
+
+[node name="ItemSpawn13" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(1383, -64)
+
+[node name="ItemSpawn14" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(1443, -80)
+
+[node name="ItemSpawn15" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(1655, 64)
+
+[node name="ItemSpawn16" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(1477, 32)
+
+[node name="ItemSpawn17" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(1779, 0)
+
+[node name="ItemSpawn18" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(1925, 64)
+
+[node name="ItemSpawn19" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(2038, -79)
+
+[node name="ItemSpawn20" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(2056, 49)
+
+[node name="ItemSpawn21" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(2196, 64)
+
+[node name="ItemSpawn22" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(2308, 16)
+
 [node name="HomeBase" type="Area2D" parent="."]
 position = Vector2(-312, 26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HomeBase"]
 shape = SubResource("RectangleShape2D_dinhu")
+
+[node name="StartPos" type="Node2D" parent="."]
+position = Vector2(-170, 0)
+
+[node name="EndPos" type="Node2D" parent="."]
+position = Vector2(2500, 0)
 
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]

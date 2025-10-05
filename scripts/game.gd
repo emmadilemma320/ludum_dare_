@@ -3,6 +3,8 @@ class_name Game extends Node2D
 
 func _ready() -> void:
 	Global.spawn_pos = spawn_pos
+	Global.start_pos = $StartPos.position.x
+	Global.end_pos = $EndPos.position.x
 
 func _process(delta: float) -> void:
 	if Global.player_dead:
