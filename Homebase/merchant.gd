@@ -12,6 +12,13 @@ var _ui_instance: Control = null
 func _ready():
 	label.visible = false
 	_ui_scene = load("res://Homebase/merchant_ui.tscn")
+	
+	# Keep merchant off the player's Hitbox radar:
+	const INTERACT_LAYER := 1 << 7   # Layer 8
+	const PLAYER_BODY_LAYER := 1 << 0 # Layer 1 (adjust if yours differs)
+	
+	area_2d.collision_layer = INTERACT_LAYER
+	area_2d.collision_mask  = PLAYER_BODY_LAYER   # only detect bodies on L1, not Areas
 
 	if not InputMap.has_action(INTERACT_ACTION):
 		InputMap.add_action(INTERACT_ACTION)

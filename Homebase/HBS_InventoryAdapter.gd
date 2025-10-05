@@ -80,6 +80,8 @@ func add_upgrade(id: String) -> void:
 	# Triggered when buying +50 speed upgrade
 	if id == "upgrade_b" and player:
 		_apply_speed_bonus(50)
+	if id == "upgrade_a" and player:
+		__apply_health_bonus(20)
 			
 # ---- helpers ----
 func _get_item_id(it) -> String:
@@ -109,7 +111,15 @@ func _apply_speed_bonus(amount: int) -> void:
 		var val = player.get(prop)
 		if typeof(val) == TYPE_INT or typeof(val) == TYPE_FLOAT:
 			player.set(prop, val + amount)
-			print("+50 speed! New %s = %s" % [prop, player.get(prop)])
+			print("Speed up! New %s = %s" % [prop, player.get(prop)])
+			return
+func __apply_health_bonus(amount: int) -> void:
+	var candidates := ["max_health"]
+	for prop in candidates:
+		var val = player.get(prop)
+		if typeof(val) == TYPE_INT or typeof(val) == TYPE_FLOAT:
+			player.set(prop, val + amount)
+			print("Health up! New %s = %s" % [prop, player.get(prop)])
 			return
 func _ready():
 	if player == null and get_parent() != null:
