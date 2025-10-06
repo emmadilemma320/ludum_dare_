@@ -29,6 +29,11 @@ func _ready():
 	area_2d.body_entered.connect(_on_body_enter)
 	area_2d.body_exited.connect(_on_body_exit)
 
+func _process(delta: float) -> void:
+	if (Global.player.position - position).length() > 400:
+		if _ui_instance:
+			_ui_instance.queue_free()
+
 func _on_body_enter(body: Node) -> void:
 	_current_player = body
 	label.visible = true
