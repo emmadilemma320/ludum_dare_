@@ -5,6 +5,8 @@ class_name GhostPlayer extends CharacterBody2D
 @onready var playback: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+const GOLD_CROWN = preload("res://items/gold_crown.tres")
+
 var can_move: bool = true
 @export var ground_speed: float
 @export var fly_speed: float
@@ -134,6 +136,11 @@ func die():
 	is_dead = true
 	Global.player_dead = true
 	visible = false
+	
+	if inventory.items.has(GOLD_CROWN):
+		var idx = inventory.items.find(GOLD_CROWN)
+		inventory.remove_item(idx)
+	
 	for i in inventory.items.size() / 2:
 		inventory.items.shuffle()
 		inventory.remove_item(inventory.items.size() - 1 - i)

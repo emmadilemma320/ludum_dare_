@@ -64,7 +64,7 @@ shape = SubResource("CircleShape2D_xmtf4")
 sprite_frames = SubResource("SpriteFrames_hw54v")
 animation = &"crow_flap"
 autoplay = "crow_flap"
-frame_progress = 0.222455
+frame_progress = 0.153902
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

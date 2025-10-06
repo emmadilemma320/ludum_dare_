@@ -34,7 +34,7 @@ var UPGRADE_DEFS := [
 	{ "id": "upgrade_e", "icon": "res://Homebase/Hover.png", "label": "Golden Umberlla (Hover+)", "price": 75 },
 	{ "id": "upgrade_f", "icon": "res://Homebase/capacity.png", "label": "Pandora's Box (Inventory+)", "price": 100 },
 	{ "id": "upgrade_g", "icon": "res://Homebase/Luck.png", "label": "Four-leaf clover (luck+)", "price": 100 },
-	{ "id": "upgrade_h", "icon": "res://Homebase/Shiny.png", "label": "The Shiny", "price": 10000 },
+	{ "id": "upgrade_h", "icon": "res://Homebase/Shiny.png", "label": "The Shiny", "price": 100000 },
 ]
 	
 func _style_label(lbl: Label):

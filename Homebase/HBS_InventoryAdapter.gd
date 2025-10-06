@@ -5,7 +5,7 @@ class_name HBS_InventoryAdapter
 @export var player: Node
 @export var price_map := {}  # still supported as a fallback for non-Item data
 
-const ItemSpawn = preload("res://item_spawn.gd")
+const ItemSpawn = preload("res://scripts/item_spawn.gd")
 
 var _owned_upgrades := {}
 
@@ -15,7 +15,7 @@ const BASE_PRICE_BY_TYPE := {
 	"watch": 3,
 	"necklace": 5,
 	"ring": 7,
-	"crown": 1250,
+	"crown": 12500,
 }
 const RARITY_NAMES := ["rusted", "copper", "silver", "gold"]  # index = enum value
 static func _rarity_multiplier(idx: int) -> int:
@@ -134,7 +134,7 @@ func add_upgrade(id: String) -> void:
 	if id == "upgrade_c": __apply_dive_bonus(80)
 	if id == "upgrade_d": __apply_flap_bonus(20)
 	if id == "upgrade_e": __apply_hover_bonus(-10)
-	if id == "upgrade_f": __apply_inventory_bonus(5)
+	if id == "upgrade_f": __apply_inventory_bonus(10)
 	if id == "upgrade_g": __apply_luck_bonus(0.4)
 
 func _apply_speed_bonus(amount: int) -> void:
