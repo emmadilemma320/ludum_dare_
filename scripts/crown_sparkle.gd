@@ -8,5 +8,3 @@ func collect():
 	if(player.inventory.is_full()): return
 	
 	player.peck()
-	monitoring = false
-	player_in_area = false

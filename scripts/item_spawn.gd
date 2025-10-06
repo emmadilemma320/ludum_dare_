@@ -28,18 +28,18 @@ static var ranges: Dictionary[Item, Vector2] = {
 	RUSTED_WATCH: Vector2(0, 0.2),
 	RUSTED_NECKLACE: Vector2(0, 0.3),
 	
-	COPPER_COIN: Vector2(0.2, 0.4),
-	COPPER_RING: Vector2(0.2, 0.45),
-	COPPER_WATCH: Vector2(0.25, 0.45),
-	COPPER_NECKLACE: Vector2(0.3, 0.45),
+	COPPER_COIN: Vector2(0, 0.3),
+	COPPER_RING: Vector2(0, 0.3),
+	COPPER_WATCH: Vector2(0, 0.4),
+	COPPER_NECKLACE: Vector2(0, 0.4),
 	
-	SILVER_COIN: Vector2(0.3, 0.6),
-	SILVER_RING: Vector2(0.4, 0.8),
-	SILVER_WATCH: Vector2(0.4, 0.7),
-	SILVER_NECKLACE: Vector2(0.4, 0.7),
+	SILVER_COIN: Vector2(0.2, 0.4),
+	SILVER_RING: Vector2(0.2, 0.7),
+	SILVER_WATCH: Vector2(0.2, 0.7),
+	SILVER_NECKLACE: Vector2(0.2, 0.8),
 	
-	GOLD_COIN: Vector2(0.3, 0.7),
-	GOLD_RING: Vector2(0.5, 1),
+	GOLD_COIN: Vector2(0.3, 0.5),
+	GOLD_RING: Vector2(0.5, 0.7),
 	GOLD_WATCH: Vector2(0.6, 1),
 	GOLD_NECKLACE: Vector2(0.7, 1),
 }

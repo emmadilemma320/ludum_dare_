@@ -15,7 +15,7 @@ static var stateTimes: Dictionary[States, float] = {
 	States.APPEARING: .5,
 	States.SPARKLING: 1,
 	States.DISAPPEARING: .5,
-	States.HIDDEN: 4,
+	States.HIDDEN: 2,
 }
 
 func _start():
