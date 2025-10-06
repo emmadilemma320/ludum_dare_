@@ -28,12 +28,12 @@ var sfx_sell = preload("res://Homebase/coin_drop.tres")
 
 var UPGRADE_DEFS := [
 	{ "id": "upgrade_a", "icon": "res://Homebase/Health.png", "label": "Heart of Gold (HP+)", "price": 70 },
-	{ "id": "upgrade_b", "icon": "res://Homebase/Speed.png", "label": "Shiny Gear (Spd+)", "price": 100 },
+	{ "id": "upgrade_b", "icon": "res://Homebase/Speed.png", "label": "Shiny Gear (Spd+)", "price": 150 },
 	{ "id": "upgrade_c", "icon": "res://Homebase/Dive.png", "label": "Kama’s Arrowhead (Dive+)", "price": 70 },
 	{ "id": "upgrade_d", "icon": "res://Homebase/Flap.png", "label": "Ra's Feather (Flap+)", "price": 75 },
 	{ "id": "upgrade_e", "icon": "res://Homebase/Hover.png", "label": "Golden Umberlla (Hover+)", "price": 75 },
-	{ "id": "upgrade_f", "icon": "res://Homebase/capacity.png", "label": "Pandora's Box (Inventory+)", "price": 100 },
-	{ "id": "upgrade_g", "icon": "res://Homebase/Luck.png", "label": "Four-leaf clover (luck+)", "price": 100 },
+	{ "id": "upgrade_f", "icon": "res://Homebase/capacity.png", "label": "Pandora's Box (Inventory+)", "price": 120 },
+	{ "id": "upgrade_g", "icon": "res://Homebase/Luck.png", "label": "Four-leaf clover (luck+)", "price": 80 },
 	{ "id": "upgrade_h", "icon": "res://Homebase/Shiny.png", "label": "The Shiny", "price": 100000 },
 ]
 	
