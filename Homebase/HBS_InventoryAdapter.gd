@@ -130,7 +130,7 @@ func add_upgrade(id: String) -> void:
 	if not is_instance_valid(player): return
 
 	if id == "upgrade_b": _apply_speed_bonus(50)
-	if id == "upgrade_a": __apply_health_bonus(1)
+	if id == "upgrade_a": __apply_health_bonus(2)
 	if id == "upgrade_c": __apply_dive_bonus(80)
 	if id == "upgrade_d": __apply_flap_bonus(20)
 	if id == "upgrade_e": __apply_hover_bonus(-10)

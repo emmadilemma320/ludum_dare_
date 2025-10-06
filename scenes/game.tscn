@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bgukh7keafv8t" path="res://scenes/item_sparkle.tscn" id="12_trtic"]
 [ext_resource type="AudioStream" uid="uid://c3rjuxad4tfuo" path="res://assets/sfx/get_item.tres" id="13_kvuet"]
 [ext_resource type="AudioStream" uid="uid://c6nmi3yteafdm" path="res://assets/01 game-game_0.ogg" id="14_trtic"]
-[ext_resource type="Resource" uid="uid://debbpc3ncgox" path="res://items/necklaces/silver_necklace.tres" id="18_ssvqc"]
+[ext_resource type="Resource" uid="uid://c12jxbym8b8jr" path="res://items/gold_crown.tres" id="19_264po"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
 texture = ExtResource("6_u5sy4")
@@ -505,7 +505,19 @@ position = Vector2(2754, 16)
 position = Vector2(3058, 1)
 
 [node name="ItemSpawn27" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
-position = Vector2(3252, -33)
+position = Vector2(3250, -64)
+
+[node name="ItemSpawn29" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(2772, 16)
+
+[node name="ItemSpawn30" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(2542, 64)
+
+[node name="ItemSpawn31" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(2456, 48)
+
+[node name="ItemSpawn32" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
+position = Vector2(2260, 32)
 
 [node name="ItemSpawn28" parent="ItemSpawns" instance=ExtResource("9_dinhu")]
 position = Vector2(3481, -32)
@@ -605,7 +617,7 @@ parameters/looping = true
 
 [node name="ItemSparkle" parent="." instance=ExtResource("12_trtic")]
 position = Vector2(141, 64)
-item = ExtResource("18_ssvqc")
+item = ExtResource("19_264po")
 
 [connection signal="body_entered" from="HomeBase" to="." method="_on_home_base_body_entered"]
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]
