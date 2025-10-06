@@ -183,11 +183,11 @@ func __apply_inventory_bonus(amount: int) -> void:
 		var v = inventory.get(prop)
 		if typeof(v) == TYPE_INT or typeof(v) == TYPE_FLOAT:
 			inventory.set(prop, v + amount)
-	print("Inventory capaity up! capaity=%s" % [inventory.get("capaity")])
+	print("Inventory capaity up!" % [inventory.get("capaity")])
 	
 func __apply_luck_bonus(amount: int) -> void:
 	ItemSpawn.spawn_chance += amount
-	print("Item spawn rate up! Rate=%s" % [ItemSpawn.spawn_chance])
+	print("Item spawn rate up!" % [ItemSpawn.spawn_chance])
 
 # ------------------------------------------------------------------
 # Recalculate +1 max_health per 5 carried items
