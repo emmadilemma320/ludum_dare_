@@ -4,6 +4,7 @@ class_name HBS_InventoryAdapter
 @export var inventory: Inventory
 @export var player: Node
 @export var price_map := {}  # still supported as a fallback for non-Item data
+@onready var win_overlay = get_tree().get_first_node_in_group("win_overlay")
 
 const ItemSpawn = preload("res://scripts/item_spawn.gd")
 
@@ -136,6 +137,7 @@ func add_upgrade(id: String) -> void:
 	if id == "upgrade_e": __apply_hover_bonus(-10)
 	if id == "upgrade_f": __apply_inventory_bonus(8)
 	if id == "upgrade_g": __apply_luck_bonus(0.4)
+	if id == "upgrade_h": __apply_win()
 
 func _apply_speed_bonus(amount: int) -> void:
 	# If add_speed(), prefer that
@@ -188,6 +190,12 @@ func __apply_inventory_bonus(amount: int) -> void:
 func __apply_luck_bonus(amount: int) -> void:
 	ItemSpawn.spawn_chance += amount
 	print("Item spawn rate up!" % [ItemSpawn.spawn_chance])
+	
+func __apply_win():
+		if win_overlay:
+			win_overlay.show_win_screen()
+		else:
+			printerr("win_overlay not found")
 
 # ------------------------------------------------------------------
 # Recalculate +1 max_health per 5 carried items
