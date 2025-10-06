@@ -1,6 +1,8 @@
 class_name Game extends Node2D
 @onready var spawn_pos: Node2D = $SpawnPos
 
+@onready var heal: AudioStreamPlayer2D = $Heal
+
 func _ready() -> void:
 	Global.spawn_pos = spawn_pos
 	Global.start_pos = $StartPos.position.x
@@ -14,3 +16,10 @@ func _on_home_base_body_exited(body: Node2D) -> void:
 	if not (body is GhostPlayer): return
 	
 	get_tree().call_group("item_spawn", "try_spawn")
+
+func _on_home_base_body_entered(body: Node2D) -> void:
+	if not (body is GhostPlayer): return
+	
+	if(body.current_health < body.max_health):
+		heal.play()
+		body.current_health = body.max_health

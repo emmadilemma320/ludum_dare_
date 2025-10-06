@@ -1,6 +1,6 @@
 extends Node
 
-var player: CharacterBody2D
+var player: GhostPlayer
 var spawn_pos: Node2D
 
 var player_dead: bool
