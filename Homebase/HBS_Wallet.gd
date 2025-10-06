@@ -20,4 +20,3 @@ func try_spend(amount: int) -> bool:
 		balance_changed.emit(_coins)
 		return true
 	return false
-   

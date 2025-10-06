@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf352qlmfufw1"]
+
+[ext_resource type="Script" uid="uid://cl1u6y1wfq3s0" path="res://scripts/you_win_layer.gd" id="1_6pi6l"]
+[ext_resource type="Texture2D" uid="uid://enfptlo85ce3" path="res://assets/crow_win.png" id="2_f4p41"]
+[ext_resource type="FontFile" uid="uid://cxswg6dcpl8xt" path="res://Homebase/PixelOperator8-Bold.ttf" id="2_p7fdx"]
+[ext_resource type="Texture2D" uid="uid://loy1fyq3khva" path="res://Homebase/Shiny.png" id="3_f4p41"]
+
+[node name="YouWinLayer" type="Control" groups=["win_overlay"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6pi6l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1151.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -124.0
+offset_right = 120.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrownCrow" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_f4p41")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.917647, 0, 1)
+theme_override_fonts/font = ExtResource("2_p7fdx")
+theme_override_font_sizes/font_size = 32
+text = "You Win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shiny" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_f4p41")
+expand_mode = 2
