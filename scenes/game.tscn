@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=21 format=4 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cgfktqaks7oro" path="res://assets/layer2.png" id="10_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://b7jr4h86tyw3h" path="res://assets/layer1.png" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://rtsi3g24gc01" path="res://scenes/the_king.tscn" id="11_kvuet"]
+[ext_resource type="AudioStream" uid="uid://c6nmi3yteafdm" path="res://assets/01 game-game_0.ogg" id="13_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
 texture = ExtResource("6_u5sy4")
@@ -551,5 +552,10 @@ position = Vector2(1902, -49)
 
 [node name="TheKing" parent="." instance=ExtResource("11_kvuet")]
 position = Vector2(3376, -96)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_kvuet")
+autoplay = true
+bus = &"BGM"
 
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]
