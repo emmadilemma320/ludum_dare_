@@ -1,8 +1,8 @@
 class_name Inventory extends Node
 
-const INITIAL_SIZE = 5
+const INITIAL_SIZE = 7
 
-var capacity: int = 5
+var capacity: int = 7
 var scalar: float = 1.0
 
 var items: Array[Item] = []
