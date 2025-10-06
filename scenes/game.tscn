@@ -619,6 +619,12 @@ parameters/looping = true
 position = Vector2(141, 64)
 item = ExtResource("18_ssvqc")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="body_entered" from="HomeBase" to="." method="_on_home_base_body_entered"]
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
