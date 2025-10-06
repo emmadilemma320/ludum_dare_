@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://t8uj4rip1u3i"]
+[gd_scene load_steps=50 format=3 uid="uid://t8uj4rip1u3i"]
 
 [ext_resource type="Script" uid="uid://dvqn6wgm3ench" path="res://scripts/ghost_player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://c1jtolmija1a8" path="res://assets/crow.png" id="3_dqkch"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dnfv7wmshk2bn" path="res://scenes/UI/inventory_ui.tscn" id="5_tuyoq"]
 [ext_resource type="FontFile" uid="uid://cxswg6dcpl8xt" path="res://Homebase/PixelOperator8-Bold.ttf" id="7_fjrip"]
 [ext_resource type="Script" uid="uid://chqonl0enildh" path="res://scripts/full_inventory_text.gd" id="8_smehm"]
+[ext_resource type="Script" uid="uid://jbrl3vnsgbwj" path="res://scenes/health_inv_bonus_text.gd" id="9_ur7pv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
 radius = 6.0
@@ -406,5 +407,15 @@ text = "Full Inventory"
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("8_smehm")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 15.0
+offset_top = 60.0
+offset_right = 299.0
+offset_bottom = 100.0
+theme = SubResource("Theme_smehm")
+text = "+1 from inventory"
+script = ExtResource("9_ur7pv")
 
 [node name="PlayerSFX" type="AudioStreamPlayer" parent="."]
