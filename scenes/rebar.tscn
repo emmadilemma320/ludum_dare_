@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cy8da62y34rtn"]
 
-[ext_resource type="Script" uid="uid://7ohqn28njx00" path="res://scenes/rebar.gd" id="1_lggu4"]
+[ext_resource type="Script" uid="uid://7ohqn28njx00" path="res://scripts/rebar.gd" id="1_lggu4"]
 [ext_resource type="Texture2D" uid="uid://ctrdulq45bhmt" path="res://assets/rebar.png" id="2_mwd3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6ro2"]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fhbmqo0itsar" path="res://assets/trash_king.png" id="1_fayp8"]
 [ext_resource type="PackedScene" uid="uid://bgukh7keafv8t" path="res://scenes/item_sparkle.tscn" id="3_ouj4y"]
 [ext_resource type="Resource" uid="uid://c12jxbym8b8jr" path="res://items/gold_crown.tres" id="4_48868"]
-[ext_resource type="Script" uid="uid://q0nufe4cx3dr" path="res://scenes/crown_sparkle.gd" id="4_ouj4y"]
+[ext_resource type="Script" uid="uid://q0nufe4cx3dr" path="res://scripts/crown_sparkle.gd" id="4_ouj4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jlkk"]
 atlas = ExtResource("1_fayp8")
@@ -72,7 +72,7 @@ z_index = 10
 sprite_frames = SubResource("SpriteFrames_5tm0r")
 animation = &"crown"
 autoplay = "crown"
-frame_progress = 0.558451
+frame_progress = 0.524148
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

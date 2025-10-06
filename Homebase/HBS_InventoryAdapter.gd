@@ -135,7 +135,7 @@ func add_upgrade(id: String) -> void:
 	if id == "upgrade_d": __apply_flap_bonus(20)
 	if id == "upgrade_e": __apply_hover_bonus(-10)
 	if id == "upgrade_f": __apply_inventory_bonus(5)
-	if id == "upgrade_g": __apply_luck_bonus(0.2)
+	if id == "upgrade_g": __apply_luck_bonus(0.4)
 
 func _apply_speed_bonus(amount: int) -> void:
 	# If add_speed(), prefer that
