@@ -632,7 +632,6 @@ position = Vector2(141, 64)
 item = ExtResource("18_ssvqc")
 
 [node name="YouWin" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="YouWinLayer" parent="YouWin" instance=ExtResource("20_1kice")]
 
