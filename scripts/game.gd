@@ -1,7 +1,8 @@
 class_name Game extends Node2D
 @onready var spawn_pos: Node2D = $SpawnPos
 
-@onready var heal: AudioStreamPlayer2D = $Heal
+@onready var heal: AudioStreamPlayer = $Heal
+@onready var music: AudioStreamPlayer = $Music
 
 func _ready() -> void:
 	Global.spawn_pos = spawn_pos
@@ -23,3 +24,7 @@ func _on_home_base_body_entered(body: Node2D) -> void:
 	if(body.current_health < body.max_health):
 		heal.play()
 		body.current_health = body.max_health
+
+
+func _on_music_finished() -> void:
+	music.pitch_scale = randf_range(0.9, 1.1)
