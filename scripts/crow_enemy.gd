@@ -1,13 +1,15 @@
 class_name CrowEnemy extends CharacterBody2D
 
-const speed: int = 30
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+
+const speed: int = 50
 
 var dir: Vector2
 var player_detected: bool
 var player: CharacterBody2D
 
 var attack_damage: int = 1
-var detection_range: int = 1000
+var detection_range: int = 650
 
 var jump_away: bool
 
@@ -20,6 +22,8 @@ func _ready():
 func _process(delta: float) -> void:
 	Global.enemy_crow_hitbox = $Hitbox
 	
+	ray_cast_2d.target_position = player.position - position
+	
 	if Global.player_dead:
 		player_detected = false
 	else:
@@ -28,8 +32,10 @@ func _process(delta: float) -> void:
 		else:
 			player_detected = true
 	
-	move(delta)
 	animate()
+	
+	if ray_cast_2d.is_colliding(): return
+	move(delta)
 
 func move(delta):
 	if jump_away and !Global.player_dead:

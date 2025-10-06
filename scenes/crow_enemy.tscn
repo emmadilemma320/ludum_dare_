@@ -1,43 +1,37 @@
-[gd_scene load_steps=14 format=3 uid="uid://c34tfkbvcpa58"]
+[gd_scene load_steps=11 format=3 uid="uid://c34tfkbvcpa58"]
 
 [ext_resource type="Script" uid="uid://dhbia6gpwl77a" path="res://scripts/crow_enemy.gd" id="1_6ouuk"]
-[ext_resource type="Texture2D" uid="uid://co0yhkuxdin3y" path="res://assets/free_pigeon_assets_temp.png" id="1_xmtf4"]
-[ext_resource type="Texture2D" uid="uid://c1jtolmija1a8" path="res://assets/crow.png" id="2_w2j0w"]
+[ext_resource type="Texture2D" uid="uid://bfk8ufw52pu8c" path="res://assets/crow_enemy.png" id="2_6ouuk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmtf4"]
 radius = 5.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hw54v"]
-atlas = ExtResource("2_w2j0w")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2j0w"]
+atlas = ExtResource("2_6ouuk")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eqi8w"]
-atlas = ExtResource("2_w2j0w")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw54v"]
+atlas = ExtResource("2_6ouuk")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mhdm"]
-atlas = ExtResource("2_w2j0w")
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqi8w"]
+atlas = ExtResource("2_6ouuk")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2rmlr"]
-atlas = ExtResource("2_w2j0w")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mhdm"]
+atlas = ExtResource("2_6ouuk")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_deyel"]
-atlas = ExtResource("2_w2j0w")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rmlr"]
+atlas = ExtResource("2_6ouuk")
 region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ouuk"]
-atlas = ExtResource("1_xmtf4")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2j0w"]
-atlas = ExtResource("1_xmtf4")
-region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hw54v"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2j0w")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hw54v")
 }, {
@@ -49,23 +43,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2rmlr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_deyel")
 }],
 "loop": true,
 "name": &"crow_flap",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ouuk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2j0w")
-}],
-"loop": true,
-"name": &"fly_temp",
 "speed": 5.0
 }]
 
@@ -84,7 +64,7 @@ shape = SubResource("CircleShape2D_xmtf4")
 sprite_frames = SubResource("SpriteFrames_hw54v")
 animation = &"crow_flap"
 autoplay = "crow_flap"
-frame_progress = 0.131961
+frame_progress = 0.25835
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -93,5 +73,8 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_6ouuk")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
