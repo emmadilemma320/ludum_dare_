@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://rtsi3g24gc01"]
+[gd_scene load_steps=14 format=3 uid="uid://rtsi3g24gc01"]
 
 [ext_resource type="Script" uid="uid://05qa2kygq26y" path="res://scripts/the_king.gd" id="1_2jlkk"]
 [ext_resource type="Texture2D" uid="uid://fhbmqo0itsar" path="res://assets/trash_king.png" id="1_fayp8"]
+[ext_resource type="PackedScene" uid="uid://bgukh7keafv8t" path="res://scenes/item_sparkle.tscn" id="3_ouj4y"]
+[ext_resource type="Resource" uid="uid://c12jxbym8b8jr" path="res://items/gold_crown.tres" id="4_48868"]
+[ext_resource type="Script" uid="uid://q0nufe4cx3dr" path="res://scenes/crown_sparkle.gd" id="4_ouj4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jlkk"]
 atlas = ExtResource("1_fayp8")
@@ -30,7 +33,7 @@ region = Rect2(64, 32, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_5tm0r"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_2jlkk")
 }, {
 "duration": 1.0,
@@ -47,7 +50,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"crown",
-"speed": 1.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -57,9 +60,6 @@ animations = [{
 "name": &"nocrown",
 "speed": 1.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pc8gb"]
-radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jlkk"]
 size = Vector2(20, 15)
@@ -72,15 +72,15 @@ z_index = 10
 sprite_frames = SubResource("SpriteFrames_5tm0r")
 animation = &"crown"
 autoplay = "crown"
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(5, -1)
-shape = SubResource("CircleShape2D_pc8gb")
+frame_progress = 0.558451
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(2, 8.5)
 shape = SubResource("RectangleShape2D_2jlkk")
+
+[node name="ItemSparkle" parent="." instance=ExtResource("3_ouj4y")]
+visible = false
+script = ExtResource("4_ouj4y")
+item = ExtResource("4_48868")

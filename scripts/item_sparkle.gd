@@ -28,14 +28,17 @@ func _physics_process(delta: float) -> void:
 	elif state == States.HIDDEN: process_state(0, 0, States.APPEARING)
 	
 	if player_in_area and player.is_on_floor() and Input.is_action_just_pressed("interact"):
-		player.inventory.add_item(item)
+		collect()
+
+func collect():
+	player.inventory.add_item(item)
 		
-		if(player.inventory.is_full()): return
-		
-		player.peck()
-		monitoring = false
-		player_in_area = false
-		queue_free()
+	if(player.inventory.is_full()): return
+	
+	player.peck()
+	monitoring = false
+	player_in_area = false
+	queue_free()
 
 func process_state(from: float, to: float, next_state: States):
 	var weight = 1 - timer.time_left / stateTimes[state]
