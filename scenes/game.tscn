@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=18 format=4 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://c34tfkbvcpa58" path="res://scenes/crow_enemy.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://pfqay6ok4qi0" path="res://assets/tileset_garbage.png" id="6_gee14"]
 [ext_resource type="PackedScene" uid="uid://bg55fw80edhf8" path="res://Homebase/merchant.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dr05l58s3l1c6" path="res://assets/nest.png" id="6_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://dxosehf2lcqkq" path="res://scenes/human_thrower.tscn" id="9_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://cu1tqo3x8hl2c" path="res://scenes/item_spawn.tscn" id="9_dinhu"]
+[ext_resource type="PackedScene" path="res://scenes/human_thrower.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" path="res://scenes/item_spawn.tscn" id="9_dinhu"]
 [ext_resource type="Texture2D" uid="uid://cgfktqaks7oro" path="res://assets/layer2.png" id="10_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://b7jr4h86tyw3h" path="res://assets/layer1.png" id="10_vtaks"]
 
@@ -461,5 +462,16 @@ position = Vector2(-170, 0)
 
 [node name="EndPos" type="Node2D" parent="."]
 position = Vector2(2500, 0)
+
+[node name="CrowEnemies" type="Node2D" parent="."]
+
+[node name="CrowEnemy" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+position = Vector2(43, 17)
+
+[node name="CrowEnemy2" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+position = Vector2(1523, -85)
+
+[node name="CrowEnemy3" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+position = Vector2(2351, -64)
 
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]
