@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=18 format=4 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://te7lmyg8a46x" path="res://scenes/rebar_thrower.tscn" id="10_dinhu"]
 [ext_resource type="Texture2D" uid="uid://cgfktqaks7oro" path="res://assets/layer2.png" id="10_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://b7jr4h86tyw3h" path="res://assets/layer1.png" id="10_vtaks"]
-[ext_resource type="PackedScene" uid="uid://bgukh7keafv8t" path="res://scenes/item_sparkle.tscn" id="11_dinhu"]
-[ext_resource type="Resource" uid="uid://c12jxbym8b8jr" path="res://items/gold_crown.tres" id="12_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
 texture = ExtResource("6_u5sy4")
@@ -532,9 +530,5 @@ position = Vector2(3081, -7)
 
 [node name="RebarThrower4" parent="Enemies" instance=ExtResource("10_dinhu")]
 position = Vector2(2917, 8)
-
-[node name="ItemSparkle" parent="Enemies" instance=ExtResource("11_dinhu")]
-position = Vector2(-160, 64)
-item = ExtResource("12_kvuet")
 
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]
