@@ -514,7 +514,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -606.0
 offset_top = -171.0
-offset_right = -407.0
+offset_right = -403.0
 offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -522,7 +522,7 @@ pivot_offset = Vector2(300, 200)
 
 [node name="LeftVBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_right = 199.0
+offset_right = 203.0
 offset_bottom = 158.0
 
 [node name="Label" type="Label" parent="Panel/LeftVBox"]
@@ -547,12 +547,12 @@ layout_mode = 2
 layout_mode = 0
 offset_left = -379.0
 offset_top = -151.0
-offset_right = -212.0
+offset_right = -204.0
 offset_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelPlayer"]
 layout_mode = 0
-offset_right = 167.0
+offset_right = 175.0
 offset_bottom = 147.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelPlayer/VBoxContainer"]

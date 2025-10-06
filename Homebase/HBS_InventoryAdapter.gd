@@ -99,6 +99,7 @@ func remove_amount(item_id: String, qty: int) -> void:
 			if String(it) == item_id:
 				inv.remove_item(i)
 				remaining -= 1
+	update_health_bonus_from_inventory()
 
 func remove_sold(ids: Array) -> void:
 	var inv := _ensure_inventory()
@@ -116,6 +117,7 @@ func remove_sold(ids: Array) -> void:
 			curr_id = String(it)
 		if curr_id in idset:
 			inv.remove_item(i)
+	update_health_bonus_from_inventory()
 
 # ---- Upgrades ----
 func has_upgrade(id: String) -> bool:
@@ -127,9 +129,10 @@ func add_upgrade(id: String) -> void:
 
 	if id == "upgrade_b": _apply_speed_bonus(50)
 	if id == "upgrade_a": __apply_health_bonus(1)
-	if id == "upgrade_c": __apply_dive_bonus(50)
+	if id == "upgrade_c": __apply_dive_bonus(80)
 	if id == "upgrade_d": __apply_flap_bonus(20)
 	if id == "upgrade_e": __apply_hover_bonus(-10)
+	if id == "upgrade_f": __apply_inventory_bonus(5)
 
 func _apply_speed_bonus(amount: int) -> void:
 	# If add_speed(), prefer that
@@ -171,6 +174,35 @@ func __apply_hover_bonus(amount: int) -> void:
 		if typeof(v) == TYPE_INT or typeof(v) == TYPE_FLOAT:
 			player.set(prop, v + amount)
 	print("Hover time up! gravity=%s" % [player.get("gravity")])
+
+func __apply_inventory_bonus(amount: int) -> void:
+	for prop in ["capacity"]:
+		var v = inventory.get(prop)
+		if typeof(v) == TYPE_INT or typeof(v) == TYPE_FLOAT:
+			inventory.set(prop, v + amount)
+	print("Inventory capaity up! capaity=%s" % [inventory.get("capaity")])
+
+# ------------------------------------------------------------------
+# Recalculate +1 max_health per 5 carried items
+# ------------------------------------------------------------------
+func update_health_bonus_from_inventory() -> void:
+	var count = inventory.items.size()
+	var bonus = int(count / 5)  # 1 health per 5 items
+
+	# Store and update only when changed
+	if not player.has_meta("item_health_bonus"):
+		player.set_meta("item_health_bonus", 0)
+
+	var prev_bonus = player.get_meta("item_health_bonus")
+	if prev_bonus != bonus:
+		# Remove previous bonus
+		for prop in ["max_health"]:
+			var v = player.get(prop)
+			if typeof(v) == TYPE_INT or typeof(v) == TYPE_FLOAT:
+				player.set(prop, v - prev_bonus + bonus)
+		player.set_meta("item_health_bonus", bonus)
+		print("Inventory bonus updated: +%d max health (total = %d items)" % [bonus, count])
+	_ensure_inventory()
 
 # Try to find/remember the Inventory node
 func _ensure_inventory() -> Inventory:
