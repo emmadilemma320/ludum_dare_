@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://rtsi3g24gc01"]
+
+[ext_resource type="Script" uid="uid://05qa2kygq26y" path="res://scripts/the_king.gd" id="1_2jlkk"]
+[ext_resource type="Texture2D" uid="uid://fhbmqo0itsar" path="res://assets/trash_king.png" id="1_fayp8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jlkk"]
+atlas = ExtResource("1_fayp8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmwiy"]
+atlas = ExtResource("1_fayp8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouj4y"]
+atlas = ExtResource("1_fayp8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48868"]
+atlas = ExtResource("1_fayp8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owwa7"]
+atlas = ExtResource("1_fayp8")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tm0r"]
+atlas = ExtResource("1_fayp8")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tm0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jlkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmwiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouj4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48868")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owwa7")
+}],
+"loop": true,
+"name": &"crown",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tm0r")
+}],
+"loop": true,
+"name": &"nocrown",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pc8gb"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jlkk"]
+size = Vector2(20, 15)
+
+[node name="TheKing" type="Node2D"]
+script = ExtResource("1_2jlkk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_5tm0r")
+animation = &"crown"
+autoplay = "crown"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5, -1)
+shape = SubResource("CircleShape2D_pc8gb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 8.5)
+shape = SubResource("RectangleShape2D_2jlkk")

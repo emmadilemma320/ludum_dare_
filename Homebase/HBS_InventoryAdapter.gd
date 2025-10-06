@@ -5,6 +5,8 @@ class_name HBS_InventoryAdapter
 @export var player: Node
 @export var price_map := {}  # still supported as a fallback for non-Item data
 
+const ItemSpawn = preload("res://item_spawn.gd")
+
 var _owned_upgrades := {}
 
 # ---- Pricing rules for Item resources ----
@@ -133,6 +135,7 @@ func add_upgrade(id: String) -> void:
 	if id == "upgrade_d": __apply_flap_bonus(20)
 	if id == "upgrade_e": __apply_hover_bonus(-10)
 	if id == "upgrade_f": __apply_inventory_bonus(5)
+	if id == "upgrade_g": __apply_luck_bonus(0.2)
 
 func _apply_speed_bonus(amount: int) -> void:
 	# If add_speed(), prefer that
@@ -181,6 +184,10 @@ func __apply_inventory_bonus(amount: int) -> void:
 		if typeof(v) == TYPE_INT or typeof(v) == TYPE_FLOAT:
 			inventory.set(prop, v + amount)
 	print("Inventory capaity up! capaity=%s" % [inventory.get("capaity")])
+	
+func __apply_luck_bonus(amount: int) -> void:
+	ItemSpawn.spawn_chance += amount
+	print("Item spawn rate up! Rate=%s" % [ItemSpawn.spawn_chance])
 
 # ------------------------------------------------------------------
 # Recalculate +1 max_health per 5 carried items
