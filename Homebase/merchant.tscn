@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_phma5"]
-radius = 4.0
+radius = 16.0
 
 [sub_resource type="Image" id="Image_gvxu1"]
 data = {

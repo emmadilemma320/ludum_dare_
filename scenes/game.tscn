@@ -381,7 +381,7 @@ music_on_texture = SubResource("AtlasTexture_37s47")
 music_off_texture = SubResource("AtlasTexture_bt5mj")
 
 [node name="Player" parent="." instance=ExtResource("1_yqjtg")]
-position = Vector2(-272, 58)
+position = Vector2(-360, 50)
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 z_index = 1
