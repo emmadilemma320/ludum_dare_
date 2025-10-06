@@ -500,9 +500,9 @@ z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_left = 73.0
-offset_top = 43.0
+offset_top = 55.0
 offset_right = 113.0
-offset_bottom = 83.0
+offset_bottom = 95.0
 script = ExtResource("1_ut4pd")
 
 [node name="Panel" type="Panel" parent="."]

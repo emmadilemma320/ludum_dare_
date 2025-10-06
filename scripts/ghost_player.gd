@@ -157,7 +157,7 @@ func respawn():
 	
 	Global.player_dead = false
 	is_immune = false
-	current_health = max_health
+	current_health = 1
 
 func immunity_cooldown(seconds: float):
 	is_immune = true
