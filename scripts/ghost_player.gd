@@ -104,7 +104,7 @@ func peck():
 
 func check_enemy_hitbox():
 	var enemy_hitboxes = $Hitbox.get_overlapping_areas()
-	var damage: int
+	var damage: int = 0
 	var enemy
 	
 	if len(enemy_hitboxes) == 0:
@@ -121,14 +121,13 @@ func check_enemy_hitbox():
 
 func take_damage(damage: int):
 	current_health -= damage
+	immunity_cooldown(1.5)
 	print("player lost %d health. health is now %d" % [damage, current_health])
 	_play_damage()
 	damage_animation(0.1)
 	
 	if current_health <= 0:
 		die()
-		
-	immunity_cooldown(1.0)
 
 func die():
 	current_health = 0

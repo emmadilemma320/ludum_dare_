@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://c34tfkbvcpa58" path="res://scenes/crow_enemy.tscn" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://pfqay6ok4qi0" path="res://assets/tileset_garbage.png" id="6_gee14"]
 [ext_resource type="PackedScene" uid="uid://bg55fw80edhf8" path="res://Homebase/merchant.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dr05l58s3l1c6" path="res://assets/nest.png" id="6_u5sy4"]
@@ -534,11 +535,24 @@ position = Vector2(3081, -7)
 [node name="RebarThrower4" parent="Enemies" instance=ExtResource("10_dinhu")]
 position = Vector2(2917, 8)
 
+<<<<<<< HEAD
 [node name="TheKing" parent="." instance=ExtResource("11_kvuet")]
 position = Vector2(3540, -59)
 
 [node name="ItemSparkle" parent="." instance=ExtResource("12_trtic")]
 position = Vector2(3545, -60)
 item = ExtResource("13_ir15t")
+=======
+[node name="CrowEnemies" type="Node2D" parent="."]
+
+[node name="CrowEnemy" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+position = Vector2(43, 17)
+
+[node name="CrowEnemy2" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+position = Vector2(1523, -85)
+
+[node name="CrowEnemy3" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+position = Vector2(2351, -64)
+>>>>>>> 038f45b473ed4b220c651cbd275675cc40500e4d
 
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]
