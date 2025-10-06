@@ -81,6 +81,6 @@ position = Vector2(2, 8.5)
 shape = SubResource("RectangleShape2D_2jlkk")
 
 [node name="ItemSparkle" parent="." instance=ExtResource("3_ouj4y")]
-visible = false
+position = Vector2(4, -5)
 script = ExtResource("4_ouj4y")
 item = ExtResource("4_48868")
