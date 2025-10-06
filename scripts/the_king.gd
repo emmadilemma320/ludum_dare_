@@ -10,7 +10,6 @@ var _player_in_range := false
 var _has_changed := false   # prevent multiple triggers
 
 func _ready() -> void:
-	# If you didn't add the input in Project Settings, auto-add it:
 	if not InputMap.has_action(ACTION):
 		InputMap.add_action(ACTION)
 		var ev := InputEventKey.new()

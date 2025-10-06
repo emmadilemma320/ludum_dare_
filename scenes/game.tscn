@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=22 format=4 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -538,16 +538,16 @@ position = Vector2(2917, 8)
 [node name="CrowEnemies" type="Node2D" parent="."]
 
 [node name="CrowEnemy" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+z_index = 5
 position = Vector2(43, 17)
 
 [node name="CrowEnemy2" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+z_index = 5
 position = Vector2(1523, -85)
 
 [node name="CrowEnemy3" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
+z_index = 5
 position = Vector2(2351, -64)
-
-[node name="TheKing" parent="." instance=ExtResource("11_kvuet")]
-position = Vector2(3540, -59)
 
 [node name="TheKing" parent="." instance=ExtResource("11_kvuet")]
 position = Vector2(3540, -59)
