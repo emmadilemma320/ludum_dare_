@@ -20,8 +20,4 @@ func try_spend(amount: int) -> bool:
 		balance_changed.emit(_coins)
 		return true
 	return false
-	
-func _ready():
-	HbsWallet.add(4000)
-	print("Coins:", HbsWallet.get_balance())
    
