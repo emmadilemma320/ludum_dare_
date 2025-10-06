@@ -33,15 +33,15 @@ static var ranges: Dictionary[Item, Vector2] = {
 	COPPER_WATCH: Vector2(0.25, 0.5),
 	COPPER_NECKLACE: Vector2(0.3, 0.6),
 	
-	SILVER_COIN: Vector2(0.2, 0.4),
-	SILVER_RING: Vector2(0.2, 0.45),
-	SILVER_WATCH: Vector2(0.25, 0.5),
-	SILVER_NECKLACE: Vector2(0.3, 0.6),
+	SILVER_COIN: Vector2(0.3, 0.8),
+	SILVER_RING: Vector2(0.5, 0.8),
+	SILVER_WATCH: Vector2(0.6, 0.9),
+	SILVER_NECKLACE: Vector2(0.6, 0.9),
 	
-	GOLD_COIN: Vector2(0.2, 1),
-	GOLD_RING: Vector2(0.2, 1),
-	GOLD_WATCH: Vector2(0.25, 1),
-	GOLD_NECKLACE: Vector2(0.3, 1),
+	GOLD_COIN: Vector2(0.5, 1),
+	GOLD_RING: Vector2(0.7, 1),
+	GOLD_WATCH: Vector2(0.75, 1),
+	GOLD_NECKLACE: Vector2(0.8, 1),
 }
 static var spawn_chance: float = 0.5
 var obj: ItemSparkle

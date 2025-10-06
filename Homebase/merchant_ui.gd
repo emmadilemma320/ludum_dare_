@@ -27,11 +27,12 @@ var sfx_buy = preload("res://Homebase/purchase_success.tres")
 var sfx_sell = preload("res://Homebase/coin_drop.tres")
 
 var UPGRADE_DEFS := [
-	{ "id": "upgrade_a", "icon": "res://Homebase/Health.png", "label": "Heart of Gold (HP+)", "price": 100 },
-	{ "id": "upgrade_b", "icon": "res://Homebase/Speed.png", "label": "Shiny Gear (Spd+)", "price": 130 },
-	{ "id": "upgrade_c", "icon": "res://Homebase/Dive.png", "label": "Kama’s Arrowhead (Dive+)", "price": 120 },
-	{ "id": "upgrade_d", "icon": "res://Homebase/Flap.png", "label": "Ra's Feather (Flap+)", "price": 200 },
-	{ "id": "upgrade_e", "icon": "res://Homebase/Hover.png", "label": "Golden Umberlla (Hover+)", "price": 200 },
+	{ "id": "upgrade_a", "icon": "res://Homebase/Health.png", "label": "Heart of Gold (HP+)", "price": 120 },
+	{ "id": "upgrade_b", "icon": "res://Homebase/Speed.png", "label": "Shiny Gear (Spd+)", "price": 120 },
+	{ "id": "upgrade_c", "icon": "res://Homebase/Dive.png", "label": "Kama’s Arrowhead (Dive+)", "price": 130 },
+	{ "id": "upgrade_d", "icon": "res://Homebase/Flap.png", "label": "Ra's Feather (Flap+)", "price": 150 },
+	{ "id": "upgrade_e", "icon": "res://Homebase/Hover.png", "label": "Golden Umberlla (Hover+)", "price": 150 },
+	{ "id": "upgrade_f", "icon": "res://Homebase/capacity.png", "label": "Pandora's Box (Inventory+)", "price": 170 },
 ]
 	
 func _style_label(lbl: Label):
@@ -136,7 +137,7 @@ func _build_upgrades():
 
 		var price_lbl := Label.new()
 		_style_label(price_lbl)
-		price_lbl.custom_minimum_size = Vector2(35, 0)
+		price_lbl.custom_minimum_size = Vector2(25, 0)
 		price_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		price_lbl.text = "%d" % price
 		row.add_child(price_lbl)
@@ -201,27 +202,27 @@ func _build_inventory():
 
 		var qty_lbl := Label.new()
 		_style_label(qty_lbl)
-		qty_lbl.custom_minimum_size = Vector2(10, 0)
+		qty_lbl.custom_minimum_size = Vector2(7, 0)
 		qty_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		qty_lbl.text = "x%d" % qty
 		row.add_child(qty_lbl)
 
 		var price_lbl := Label.new()
 		_style_label(price_lbl)
-		price_lbl.custom_minimum_size = Vector2(20, 0)
+		price_lbl.custom_minimum_size = Vector2(7, 0)
 		price_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		price_lbl.text = str(unit)
 		row.add_child(price_lbl)
 
 		var sell1 := Button.new()
-		_style_button(sell1, 20, 13)
+		_style_button(sell1, 3, 3)
 		sell1.text = "Sell 1"
 		sell1.disabled = qty <= 0
 		sell1.pressed.connect(func(): _sell_item(id, 1))
 		row.add_child(sell1)
 
 		var sell_all := Button.new()
-		_style_button(sell_all, 20, 13)
+		_style_button(sell_all, 3, 3)
 		sell_all.text = "Sell All"
 		sell_all.disabled = qty <= 0
 		sell_all.pressed.connect(func(): _sell_item(id, qty))

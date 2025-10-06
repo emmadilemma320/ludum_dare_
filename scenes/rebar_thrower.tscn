@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://te7lmyg8a46x"]
+
+[ext_resource type="Script" uid="uid://b010qiliskxf0" path="res://scripts/thrower.gd" id="1_sckkh"]
+[ext_resource type="PackedScene" uid="uid://cy8da62y34rtn" path="res://scenes/rebar.tscn" id="2_0q025"]
+[ext_resource type="Texture2D" uid="uid://c7uwis5xj4m1m" path="res://assets/rebar_thrower.png" id="2_sckkh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q025"]
+atlas = ExtResource("2_sckkh")
+region = Rect2(14, 16, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsr6i"]
+atlas = ExtResource("2_sckkh")
+region = Rect2(0, 0, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foija"]
+atlas = ExtResource("2_sckkh")
+region = Rect2(14, 0, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5li1q"]
+atlas = ExtResource("2_sckkh")
+region = Rect2(28, 0, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4xxe"]
+atlas = ExtResource("2_sckkh")
+region = Rect2(0, 16, 14, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cltc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q025")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsr6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foija")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5li1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4xxe")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 15.0
+}]
+
+[node name="RebarThrower" type="Node2D"]
+script = ExtResource("1_sckkh")
+THROWN_OBJECT = ExtResource("2_0q025")
+max_dist = 300.0
+throw_speed = 250.0
+min_throw_delay = 0.75
+max_throw_delay = 1.0
+prediction_max_offset = 60.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6cltc")
+frame_progress = 0.447001
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="ThrowTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ThrowTimer" to="." method="_on_throw_timer_timeout"]

@@ -10,6 +10,8 @@ var items: Array[Item] = []
 # (Optional SFX)
 @onready var sfx: AudioStreamPlayer = $PickupSFX if has_node("PickupSFX") else null
 
+@onready var inventory_adapter = %InventoryAdapter
+
 # Preload sounds once
 var sfx_item = preload("res://assets/sfx/get_item.tres")
 var sfx_full = preload("res://assets/sfx/full_inventory.tres")
@@ -21,7 +23,8 @@ func add_item(new_item: Item):
 	else:
 		items.append(new_item)
 		_play_item()
-
+		inventory_adapter.update_health_bonus_from_inventory()
+		
 func remove_item(index: int) -> Item:
 	var removed = items[index]
 	items.remove_at(index)

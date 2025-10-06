@@ -1,6 +1,6 @@
 extends Node2D
 
-const THROWN_OBJECT = preload("res://scenes/thrown_object.tscn")
+@export var THROWN_OBJECT: PackedScene
 
 @onready var player: GhostPlayer = Global.player
 @onready var ray_cast_2d: RayCast2D = $RayCast2D

@@ -381,6 +381,7 @@ shape = SubResource("CircleShape2D_qhqgy")
 debug_color = Color(0.958612, 0, 0.526185, 0.42)
 
 [node name="InventoryAdapter" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("4_dqkch")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
