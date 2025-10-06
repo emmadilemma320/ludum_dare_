@@ -34,6 +34,8 @@ var max_health: int = 2:
 		var diff = max(0, value - max_health)
 		max_health = value
 		current_health += diff
+		if(current_health > value):
+			current_health = value
 var current_health: int = 2
 var is_dead: bool
 var is_immune: bool 
