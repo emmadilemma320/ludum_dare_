@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = -flap_strength
 		_play_flap()
 	
-	if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength):
+	if(Input.is_action_just_pressed("dive") and velocity.y <= dive_strength and not is_on_floor()):
 		velocity.y = dive_strength
 		_play_dive()
 		

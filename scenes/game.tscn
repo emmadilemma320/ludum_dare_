@@ -330,6 +330,9 @@ sources/0 = SubResource("TileSetAtlasSource_gee14")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vtaks"]
 normal = Vector2(0, 1)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dinhu"]
+normal = Vector2(1, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(251, 148)
 
@@ -358,6 +361,16 @@ position = Vector2(0, -128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SkyBorder"]
 shape = SubResource("WorldBoundaryShape2D_vtaks")
+
+[node name="HomeEnemyBarrier" type="StaticBody2D" parent="."]
+position = Vector2(0, -128)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeEnemyBarrier"]
+position = Vector2(-186, 170)
+shape = SubResource("WorldBoundaryShape2D_dinhu")
+debug_color = Color(0.730975, 0.233483, 1, 0.42)
 
 [node name="SpawnPos" type="Node2D" parent="."]
 position = Vector2(-272, 58)
@@ -544,11 +557,11 @@ position = Vector2(1523, -85)
 
 [node name="CrowEnemy3" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
 z_index = 5
-position = Vector2(2351, -64)
+position = Vector2(2573, 19)
 
 [node name="CrowEnemy4" parent="CrowEnemies" instance=ExtResource("2_lnu2h")]
 z_index = 5
-position = Vector2(1902, -49)
+position = Vector2(2100, -34)
 
 [node name="TheKing" parent="." instance=ExtResource("11_kvuet")]
 position = Vector2(3376, -96)
