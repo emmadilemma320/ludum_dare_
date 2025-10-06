@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy8da62y34rtn"]
+
+[ext_resource type="Script" uid="uid://7ohqn28njx00" path="res://scenes/rebar.gd" id="1_lggu4"]
+[ext_resource type="Texture2D" uid="uid://ctrdulq45bhmt" path="res://assets/rebar.png" id="2_mwd3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6ro2"]
+size = Vector2(2, 12)
+
+[node name="ThrownObject" type="Node2D"]
+script = ExtResource("1_lggu4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mwd3x")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_g6ro2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

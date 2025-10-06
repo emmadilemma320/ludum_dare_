@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://d2ojxhddjdhi5"]
+[gd_scene load_steps=20 format=4 uid="uid://d2ojxhddjdhi5"]
 
 [ext_resource type="Script" uid="uid://bt6g2jcj87nq3" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://t8uj4rip1u3i" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dr05l58s3l1c6" path="res://assets/nest.png" id="6_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dxosehf2lcqkq" path="res://scenes/human_thrower.tscn" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cu1tqo3x8hl2c" path="res://scenes/item_spawn.tscn" id="9_dinhu"]
+[ext_resource type="PackedScene" uid="uid://te7lmyg8a46x" path="res://scenes/rebar_thrower.tscn" id="10_dinhu"]
 [ext_resource type="Texture2D" uid="uid://cgfktqaks7oro" path="res://assets/layer2.png" id="10_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://b7jr4h86tyw3h" path="res://assets/layer1.png" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://bgukh7keafv8t" path="res://scenes/item_sparkle.tscn" id="11_dinhu"]
+[ext_resource type="Resource" uid="uid://c12jxbym8b8jr" path="res://items/gold_crown.tres" id="12_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
 texture = ExtResource("6_u5sy4")
@@ -479,11 +482,11 @@ position = Vector2(3500, 0)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="HumanThrower" parent="Enemies" instance=ExtResource("9_0tnpc")]
-position = Vector2(173, -54)
-
 [node name="HumanThrower2" parent="Enemies" instance=ExtResource("9_0tnpc")]
 position = Vector2(310, 9)
+
+[node name="HumanThrower16" parent="Enemies" instance=ExtResource("9_0tnpc")]
+position = Vector2(173, -55)
 
 [node name="HumanThrower3" parent="Enemies" instance=ExtResource("9_0tnpc")]
 position = Vector2(616, -24)
@@ -512,19 +515,26 @@ position = Vector2(2024, -104)
 [node name="HumanThrower11" parent="Enemies" instance=ExtResource("9_0tnpc")]
 position = Vector2(2144, 25)
 
-[node name="HumanThrower12" parent="Enemies" instance=ExtResource("9_0tnpc")]
-position = Vector2(2450, -72)
-
 [node name="HumanThrower13" parent="Enemies" instance=ExtResource("9_0tnpc")]
 position = Vector2(2709, 8)
 
 [node name="HumanThrower14" parent="Enemies" instance=ExtResource("9_0tnpc")]
 position = Vector2(3019, -7)
 
-[node name="HumanThrower15" parent="Enemies" instance=ExtResource("9_0tnpc")]
-position = Vector2(2845, -7)
+[node name="HumanThrower17" parent="Enemies" instance=ExtResource("9_0tnpc")]
+position = Vector2(2440, -71)
 
-[node name="HumanThrower16" parent="Enemies" instance=ExtResource("9_0tnpc")]
-position = Vector2(3200, -23)
+[node name="RebarThrower" parent="Enemies" instance=ExtResource("10_dinhu")]
+position = Vector2(3200, -24)
+
+[node name="RebarThrower3" parent="Enemies" instance=ExtResource("10_dinhu")]
+position = Vector2(3081, -7)
+
+[node name="RebarThrower4" parent="Enemies" instance=ExtResource("10_dinhu")]
+position = Vector2(2917, 8)
+
+[node name="ItemSparkle" parent="Enemies" instance=ExtResource("11_dinhu")]
+position = Vector2(-160, 64)
+item = ExtResource("12_kvuet")
 
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]
