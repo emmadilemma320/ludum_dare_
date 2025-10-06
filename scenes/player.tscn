@@ -360,6 +360,7 @@ position_smoothing_enabled = true
 script = ExtResource("3_qhqgy")
 
 [node name="PickupSFX" type="AudioStreamPlayer" parent="Inventory"]
+bus = &"SFX"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
@@ -391,3 +392,4 @@ script = ExtResource("4_dqkch")
 [node name="HeartsUI" parent="CanvasLayer" instance=ExtResource("5_qlg0r")]
 
 [node name="PlayerSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

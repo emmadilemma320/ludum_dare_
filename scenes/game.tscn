@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b7jr4h86tyw3h" path="res://assets/layer1.png" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://rtsi3g24gc01" path="res://scenes/the_king.tscn" id="11_kvuet"]
 [ext_resource type="AudioStream" uid="uid://c3rjuxad4tfuo" path="res://assets/sfx/get_item.tres" id="13_kvuet"]
+[ext_resource type="AudioStream" uid="uid://c6nmi3yteafdm" path="res://assets/01 game-game_0.ogg" id="13_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
 texture = ExtResource("6_u5sy4")
@@ -570,4 +571,9 @@ position = Vector2(3376, -96)
 stream = ExtResource("13_kvuet")
 
 [connection signal="body_entered" from="HomeBase" to="." method="_on_home_base_body_entered"]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_kvuet")
+autoplay = true
+bus = &"BGM"
+
 [connection signal="body_exited" from="HomeBase" to="." method="_on_home_base_body_exited"]

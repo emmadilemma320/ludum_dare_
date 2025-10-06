@@ -577,6 +577,7 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="MerchantSFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="ButtonClose" type="Button" parent="."]
 layout_mode = 0
