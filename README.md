@@ -19,6 +19,7 @@ Music and SFX:
 - Damage SFX: [brackeysgames.itch.io/brackeys-platformer-bundle](https://brackeysgames.itch.io/brackeys-platformer-bundle)
 
 This game was made in 2 days for Ludum Dare 58 with 
+- ThDudk (Michael Aspinall) ([itch.io](https://thdudk.itch.io/crown-crow)) ([github](https://github.com/ThDudk))
 - magnapanther ([itch.io](https://magnapanther.itch.io/))
 - Accardonull ([itch.io](https://accardonull.itch.io/)) ([github](https://github.com/AccardoNull))
 - Lea ([github](https://github.com/lea-anderson-young))
